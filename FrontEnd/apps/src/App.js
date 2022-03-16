@@ -7,6 +7,7 @@ import Asset from './pages/Asset';
 import ListKantor from './pages/ListKantor';
 import CetakReport from './pages/CetakReport';
 import Logout from './pages/Logout';
+import DataPeserta from './pages/DataPeserta';
 
 function App() {
   return(
@@ -19,6 +20,7 @@ function App() {
           <Route path='/asset' element={<Asset />} />
           <Route path='/cetak_report' element={<CetakReport />} />
           <Route path='/logout' element={<Logout />} />
+          <Route path='/DataPeserta' element={<DataPeserta />} />
         </Routes>
       </Router>
     </>
