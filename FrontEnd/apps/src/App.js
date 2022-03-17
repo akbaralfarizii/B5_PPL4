@@ -44,7 +44,7 @@ function App() {
             <Route path='/report/cetak-nilai-fit-propper' exact element={<CetakNilaiFitAndPropper/>} />
             <Route path='/report/rekap-nilai-wawancara' exact element={<RekapNilaiWawancara/>} />
             <Route path='/report/cetak-nilai-wawancara' exact element={<CetakNilaiWawancara/>} />
-            
+
           <Route path='/search-fit-propper' exact  element={<PencarianFitPropper />} />
           <Route path='/administrasi-user' exact element={<AdministrasiUser />} />
         </Routes>

@@ -16,11 +16,10 @@ const Navbar = () => {
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <div className='navbar'>
-        <div className='img'>
+          <div className='img'>
               <img src={Logo}/> 
           </div>
         <div className='navBrand'>
-        
           <p><b>FP TLN</b></p>
         </div>
           <Link to='#' className='menu-bars'>
