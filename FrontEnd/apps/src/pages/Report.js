@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Asset = () => {
+const Report = () => {
   return (
     <div className='reports'>
-      <h1>Asset</h1>
+      <h1>INI REPORT</h1>
     </div>
   );
 }
 
-export default Asset;
+export default Report;

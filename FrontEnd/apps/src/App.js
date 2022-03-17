@@ -3,22 +3,26 @@ import './App.css';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
-import Asset from './pages/Asset';
-import ListKantor from './pages/ListKantor';
-import CetakReport from './pages/CetakReport';
-import Logout from './pages/Logout';
+import Report from './pages/Report';
+import { Master,DataPenguji, DataPeserta } from './pages/Master';
+import FitAndPropper from './pages/FitAndPropper';
+import PencarianFitPropper from './pages/PencarianFitPropper';
+import AdministrasiUser from './pages/AdministrasiUser';
 
 function App() {
   return(
     <>
       <Router>
-        <Navbar />
+        <Navbar/>
         <Routes>
-          <Route path='/'  element={<Dashboard />} />
-          <Route path="/list_kantor" element={<ListKantor />} />
-          <Route path='/asset' element={<Asset />} />
-          <Route path='/cetak_report' element={<CetakReport />} />
-          <Route path='/logout' element={<Logout />} />
+          <Route path='/'  exact element={<Dashboard />} />
+          <Route path="/master" exact element={<Master />} />
+          <Route path="/master/data-peserta" exact element={<DataPeserta />} />
+          <Route path="/master/data-penguji" exact element={<DataPenguji />} />
+          <Route path='/fit-and-propper' exact element={<FitAndPropper />} />
+          <Route path='/report' exact element={<Report />} />
+          <Route path='/search-fit-propper' exact  element={<PencarianFitPropper />} />
+          <Route path='/administrasi-user' exact element={<AdministrasiUser />} />
         </Routes>
       </Router>
     </>

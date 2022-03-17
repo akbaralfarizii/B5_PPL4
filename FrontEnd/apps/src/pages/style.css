@@ -1,0 +1,41 @@
+.btn {
+    background-color: #dddddd; /* Blue background */
+    border: none; /* Remove borders */
+    color: black; /* White text */
+    padding: 10px 10px; /* Some padding */
+    font-size: 14px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #c4c4c4;
+  }
+  
+  .container {
+    margin: 20px;
+  }
+  
+  .side {
+   background-color: #f2f2f2 ;
+   
+   padding: 5px;
+   font-size: 18px;
+  }
+  
+  .TabelDataPeserta table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .TabelDataPeserta td, th {
+  border: 1px solid #f2f2f2;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .TabelDataPeserta tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
