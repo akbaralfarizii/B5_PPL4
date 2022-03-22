@@ -19,20 +19,22 @@ function DataPenguji() {
         <div>
             <button className='btn'><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Penguji</button>
         </div>
-        
-        <div className='side'>
-            <h3><BsIcons.BsFillPersonFill />  Data Penguji</h3>
+        <div className='title'>
+            <div className='title-icon'>
+                <BsIcons.BsFillPersonFill />
+            </div>
+            <h3>data Penguji</h3>
         </div>
 
         <div className='TabelDataPeserta'>
         <table>
             <tr className='table'>
-                <th  >No</th>
-                <th  >Nama</th>
-                <th >NIP</th>
-                <th  >Jabatan</th>
-                <th  >Grade</th>
-                <th  >Jenjang</th>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NIP</th>
+                <th>Jabatan</th>
+                <th>Grade</th>
+                <th>Jenjang</th>
             </tr>
 
             {todos.map((todo) => (

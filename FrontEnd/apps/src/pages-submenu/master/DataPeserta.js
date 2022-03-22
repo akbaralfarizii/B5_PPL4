@@ -1,17 +1,29 @@
 import React from 'react';
 import './style.css';
-import BsFillPersonFill from "react-icons/bs";
 import * as BsIcons from 'react-icons/bs';
+import * as api from './api';
+import { useEffect, useState } from 'react';
 
 function DataPeserta () {
+    const [todos, setTodos] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await api.readTodos();
+            setTodos(result.data.data);
+        };
+        fetchData();
+
+    }, []);
   return (
     <div className='container'>
         <div>
             <button className='btn'><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>
         </div>
-        
-        <div className='side'>
-            <h3><BsIcons.BsFillPersonFill />  data Peserta</h3>
+        <div className='title'>
+            <div className='title-icon'>
+                <BsIcons.BsFillPersonFill />
+            </div>
+            <h3>data Peserta</h3>
         </div>
 
         <div className='TabelDataPeserta'>
@@ -24,30 +36,21 @@ function DataPeserta () {
                 <th>Grade</th>
                 <th>Edit</th>
             </tr>
-            <tr>
-                <td>1.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
-            <tr>
-                <td>2.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
+
+            {todos.map((todo) => (
+            <tbody>
+              <tr>
+                <th>{todo.id}</th>
+                <td>{todo.attributes.Nama}</td>
+                <td>{todo.attributes.NIP}</td>
+                <td>{todo.attributes.nama_jabatan}</td>
+                <td>{todo.attributes.nama_grade}</td>
+                <td><button><BsIcons.BsFillPersonFill className='Icon-btn'/></button></td>
+                {/* <td>@inifoto</td> */}
+              </tr>
+            </tbody>
+          ))}
+            
         </table>
         </div>
     </div>
