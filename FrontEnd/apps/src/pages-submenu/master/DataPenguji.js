@@ -16,6 +16,10 @@ function DataPenguji() {
     }, []);
   return (
     <div className='container'>
+        <div className='locationBar'>
+            <p className='text'>Dashboard / <b> Data Penguji</b></p>
+        </div>
+        <div className='body'>
         <div>
             <button className='btn'><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Penguji</button>
         </div>
@@ -51,6 +55,8 @@ function DataPenguji() {
         </table>
         </div>
     </div>
+        </div>
+        
   );
 }
 

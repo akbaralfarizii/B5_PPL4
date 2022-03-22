@@ -19,6 +19,7 @@ import RekapManualNilaiFitAndPropper from './pages-submenu/report/RekapManualNil
 import CetakNilaiFitAndPropper from './pages-submenu/report/CetakNilaiFitAndPropper';
 import RekapNilaiWawancara from './pages-submenu/report/RekapNilaiWawancara';
 import CetakNilaiWawancara from './pages-submenu/report/CetakNilaiWawancara';
+import InputDataPeserta from './pages-submenu/master/InputDataPeserta';
 
 function App() {
   return(
@@ -29,7 +30,7 @@ function App() {
           <Route path='/'  exact element={<Dashboard />} />
           <Route path="/master" exact element={<Master />} />
             <Route path="/master/data-peserta" exact element={<DataPeserta />} />
-            <Route path="/master/data-penguji" exact element={<DataPenguji />} />
+            <Route path="/master/data-penguji" exact element={<InputDataPeserta />} />
 
           <Route path='/fit-and-propper' exact element={<FitAndPropper />} />
             <Route path='/fit-and-propper/pendaftaran-fit-propper' exact element={<PendaftaranFitAndPropper/>} />
