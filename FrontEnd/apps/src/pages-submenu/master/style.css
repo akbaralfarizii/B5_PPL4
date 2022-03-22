@@ -19,7 +19,7 @@
   }
   
   .container {
-    margin: 20px;
+    margin-top: auto;
   }
 
 .title {
@@ -54,4 +54,42 @@
     background-color: #f2f2f2;
     text-align: center;
   }
-  
+  .locationBar{
+    background-color: cornflowerblue;
+    margin-top: auto;
+    padding: 10px;
+    color: #ffffff;
+  }
+  .body{
+    margin: 25px;
+  }
+  .text{
+    margin-left: 15px;
+  }
+  .Submit{
+    margin-left: 59px;
+    margin-top: 5px;
+  }
+  .SubmitButton{
+    margin-right: 5px;
+  }
+  .containerform{
+    background-color: #f2f2f2;
+    height: 15rem;
+    margin-top: 10px;
+  }
+  .textPath{
+    margin-left: 20px;
+    padding-top: 10px;
+  }
+  .nipform{
+    margin-top: 30px;
+    margin-left: 100px;
+  }
+  .label{
+
+    width: 25rem;
+    height: 30px;
+    margin-left: 2rem;
+
+  }
