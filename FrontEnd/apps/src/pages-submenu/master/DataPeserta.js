@@ -6,10 +6,7 @@ import InputDataPeserta from './InputDataPeserta';
 
 
 function DataPeserta () {
-    function handleClick(e) {
-        e.preventDefault();
-        console.log('../InputDataPeserta.js');
-    }
+
   return (
 
     <div className='container'>
