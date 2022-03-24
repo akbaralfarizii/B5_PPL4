@@ -1,6 +1,7 @@
 import React from "react";
 import * as BsIcons from 'react-icons/bs';
 import * as AiIcons from 'react-icons/ai';
+import './style.css';
 
 function InputDataPeserta () {
     return(
