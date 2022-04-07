@@ -1,11 +1,24 @@
 import React from 'react';
 import './style.css';
-import BsFillPersonFill from "react-icons/bs";
 import * as BsIcons from 'react-icons/bs';
-import InputDataPeserta from './InputDataPeserta';
-
+import * as AiIcons from 'react-icons/ai';
+import * as api from './api';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DataPeserta () {
+    const [todos, setTodos] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const result = await api.readTodos();
+        const arr = result.data.data;
+        var sum = arr.map((item) => item).filter((item) => item.attributes.role.data.attributes.nama_role === 'Peserta');
+        setTodos(sum);
+      };
+      fetchData();
+    }, []);
+
+    let navigate = useNavigate();
 
   return (
 
@@ -15,11 +28,13 @@ function DataPeserta () {
         </div>
         <div className='body'>
         <div>
-            <button className='btn' onClick={handleClick} ><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>
+            <button className='btn' onClick={() => {navigate('/master/input-data-peserta')}}><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>  
         </div>
-        
-        <div className='side'>
-            <h3><BsIcons.BsFillPersonFill />  data Peserta</h3>
+        <div className='title'>
+            <div className='title-icon'>
+                <BsIcons.BsFillPersonFill />
+            </div>
+            <h3>Data Peserta</h3>
         </div>
 
         <div className='TabelDataPeserta'>
@@ -30,32 +45,23 @@ function DataPeserta () {
                 <th>NIP</th>
                 <th>Jabatan</th>
                 <th>Grade</th>
+                <th>Jenjang</th>
                 <th>Edit</th>
             </tr>
-            <tr>
-                <td>1.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
-            <tr>
-                <td>2.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
-            <tr>
-                <td>3.</td>
-                <td>Muhammad Akbar Alfarisi</td>
-                <td>201511049</td>
-                <td>Front-End Developer</td>
-                <td>2nd grade</td>
-                <td>test</td>
-            </tr>
+            {todos.map((todo) => (
+            <tbody>
+              <tr>
+                <th>{todo.attributes.id_pendaftar}</th>
+                <td>{todo.attributes.Nama}</td>
+                <td>{todo.attributes.NIP}</td>
+                <td>{todo.attributes.jabatan.data.attributes.nama_jabatan}</td>
+                <td>{todo.attributes.grade.data.attributes.nama_grade}</td>
+                <td>{todo.attributes.jenjang.data.attributes.nama_jenjang}</td>
+                <td><button><AiIcons.AiOutlineForm className='Icon-btn'/></button></td>
+              </tr>
+            </tbody>
+          ))}
+            
         </table>
         </div>
     </div>

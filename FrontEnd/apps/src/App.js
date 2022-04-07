@@ -20,6 +20,8 @@ import CetakNilaiFitAndPropper from './pages-submenu/report/CetakNilaiFitAndProp
 import RekapNilaiWawancara from './pages-submenu/report/RekapNilaiWawancara';
 import CetakNilaiWawancara from './pages-submenu/report/CetakNilaiWawancara';
 import InputDataPeserta from './pages-submenu/master/InputDataPeserta';
+import InputDataPenguji from './pages-submenu/master/InputDataPenguji';
+import PostDataPeserta from './pages-submenu/master/PostDataPeserta';
 
 function App() {
   return(
@@ -28,9 +30,13 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path='/'  exact element={<Dashboard />} />
-          <Route path="/master" exact element={<Master />} />
+          {/* <Route path="/master" exact element={<Master />} /> */}
             <Route path="/master/data-peserta" exact element={<DataPeserta />} />
-            <Route path="/master/data-penguji" exact element={<InputDataPeserta />} />
+            <Route path="/master/data-penguji" exact element={<DataPenguji />} />
+            <Route path="/master/input-data-peserta" exact element={<InputDataPeserta />} />
+              <Route path="/master/input-data-peserta/cek" exact element={<PostDataPeserta />} />
+
+            <Route path="/master/input-data-penguji" exact element={<InputDataPenguji />} />
 
           <Route path='/fit-and-propper' exact element={<FitAndPropper />} />
             <Route path='/fit-and-propper/pendaftaran-fit-propper' exact element={<PendaftaranFitAndPropper/>} />

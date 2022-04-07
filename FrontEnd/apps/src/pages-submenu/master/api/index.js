@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://192.168.100.2:1337/api/pegawais';
+const url = 'http://localhost:1337/api/pegawais?populate=*';
 export const readTodos = () => axios.get(url);
 
 // const urlGambar = 'http://192.168.1.5:1337/api/upload/files';
