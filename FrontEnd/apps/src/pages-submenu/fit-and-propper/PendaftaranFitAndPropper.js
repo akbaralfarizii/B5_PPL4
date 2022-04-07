@@ -24,7 +24,7 @@ const PendaftaranFitAndPropper = () => {
                     <form>
                         <table>
                             <tr>
-                                <td><label>NIP</label></td>
+                                <td><label >NIP</label></td>
                                 <td><input type="text" name='NIP' className='label'/></td>
                             </tr>
                             <tr>
@@ -41,7 +41,7 @@ const PendaftaranFitAndPropper = () => {
                             </tr>
                             <tr>
                                 <td><label>Date</label></td>
-                                <td><input type="text" name='Date' className='label'/></td>
+                                <td><input type="date" name='Date' className='label'/></td>
                             </tr>
                             <tr>
                                 <td><label>Proyeksi</label></td>
@@ -61,11 +61,11 @@ const PendaftaranFitAndPropper = () => {
                             </tr>
                             <tr>
                                 <td><label>Upload PPT *.ppt/.pptx</label></td>
-                                <td><input type="text" name='UploadPPT' className='label'/></td>
+                                <td><input type="file" name='UploadPPT' className='label'/></td>
                             </tr>
                             <tr>
                                 <td><label>Upload CV *.doc/docx</label></td>
-                                <td><input type="text" name='UploadCV' className='label'/></td>
+                                <td><input type="file" name='UploadCV' className='label'/></td>
                             </tr>
                             <tr>
                                 <td><label>Penguji</label></td>
@@ -77,7 +77,6 @@ const PendaftaranFitAndPropper = () => {
                         <input type="submit" value="Simpan" className="SubmitButton"/>
                         
                     </div>
-                    
                 </div>
             </div>
         </div>

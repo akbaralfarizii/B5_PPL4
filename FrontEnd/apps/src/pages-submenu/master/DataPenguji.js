@@ -3,6 +3,7 @@ import './style.css';
 import * as BsIcons from 'react-icons/bs';
 import * as api from './api';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DataPenguji() {
     const [todos, setTodos] = useState([]);
@@ -14,6 +15,9 @@ function DataPenguji() {
         fetchData();
 
     }, []);
+
+    let navigate = useNavigate();
+
   return (
     <div className='container'>
         <div className='locationBar'>
@@ -21,7 +25,7 @@ function DataPenguji() {
         </div>
         <div className='body'>
         <div>
-            <button className='btn'><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Penguji</button>
+            <button className='btn' onClick={() => {navigate('/master/input-data-penguji')}}><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Penguji</button>
         </div>
         <div className='title'>
             <div className='title-icon'>

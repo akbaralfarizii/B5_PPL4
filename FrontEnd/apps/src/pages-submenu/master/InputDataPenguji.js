@@ -4,23 +4,24 @@ import * as AiIcons from 'react-icons/ai';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 
-function InputDataPeserta () {
+
+function InputDataPenguji () {
     let navigate = useNavigate();
     return(
         <div className='container'>
             <div className='locationBar'>
-                <p className='text'>Dashboard / <b> Tambah/Update Data Peserta</b></p>
+                <p className='text'>Dashboard / <b> Tambah/Update Data Penguji</b></p>
             </div>
             <div className="body">
                 <div>
-                    <button className='btn' onClick={() => {navigate("/master/data-peserta")}}><BsIcons.BsFillPersonFill className='Icon-btn'/> KEMBALI</button>
+                    <button className='btn' onClick={() => {navigate("/master/data-penguji")}}><BsIcons.BsFillPersonFill className='Icon-btn'/> KEMBALI</button>
                 </div>
                 <div className="containerform">
                     <div className="textPath">
-                        <AiIcons.AiOutlineForm className='icon-btn' /> <b>Tambah / Update Data Peserta</b>
+                        <AiIcons.AiOutlineForm className='icon-btn' /> <b>Tambah / Update Data Penguji</b>
                     </div> 
                     <div className="textPath">
-                       <b>Input Data Peserta</b> 
+                       <b>Input Data Penguji</b> 
                     </div>
                     <div className="nipform">
                         <form>
@@ -40,4 +41,4 @@ function InputDataPeserta () {
         </div>
     )
 }
-export default InputDataPeserta;
+export default InputDataPenguji;

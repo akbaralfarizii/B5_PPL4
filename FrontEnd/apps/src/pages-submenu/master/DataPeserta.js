@@ -4,6 +4,7 @@ import * as BsIcons from 'react-icons/bs';
 import InputDataPeserta from './InputDataPeserta';
 import * as api from './api';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DataPeserta () {
     const [todos, setTodos] = useState([]);
@@ -18,8 +19,10 @@ function DataPeserta () {
     }, []);
     function handleClick(e) {
         e.preventDefault();
-        console.log('../InputDataPeserta.js');
+        console.log('./InputDataPeserta.js');
     }
+
+    let navigate = useNavigate();
 
 
   return (
@@ -29,8 +32,8 @@ function DataPeserta () {
             <p className='text'>Dashboard / <b> Data Peserta</b></p>
         </div>
         <div className='body'>
-        <div>
-            <button className='btn' onClick={handleClick} ><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>
+        <div>            
+            <button className='btn' onClick={() => {navigate('/master/input-data-peserta')}} ><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>
         </div>
         <div className='title'>
             <div className='title-icon'>
@@ -56,7 +59,7 @@ function DataPeserta () {
                 <th>{todo.id}</th>
                 <td>{todo.attributes.Nama}</td>
                 <td>{todo.attributes.NIP}</td>
-                <td>{todo.attributes.nama_jabatan}</td>
+                <td>{todo.attributes.jabatan}</td>
                 <td>{todo.attributes.nama_grade}</td>
                 <td><button><BsIcons.BsFillPersonFill className='Icon-btn'/></button></td>
                 {/* <td>@inifoto</td> */}

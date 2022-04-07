@@ -94,11 +94,20 @@
   }
   
   label{
-    width: 25rem;
+    height: 30px;
+    margin-left: 1rem;
+    margin-bottom: 10px;
+    text-align-last:right;
+    font-weight: bold;
+    display: block;
+  }
+
+  .label{
+    
     height: 30px;
     margin-left: 2rem;
     margin-bottom: 10px;
-    text-align: right;
+    
   }
 
   .labelNama{
