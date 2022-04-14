@@ -18,7 +18,7 @@ function DataPenguji() {
         fetchData();
 
     }, []);
-
+    let nomor = 1;
     let navigate = useNavigate();
   return (
     <div className='container'>
@@ -45,12 +45,11 @@ function DataPenguji() {
                 <th>Jenjang</th>
                 <th>Edit</th>
             </tr>
-
-            {todos.map((todo) => (
+            {todos.map((todo, index) => (
             <tbody>
               <tr>
-                <th>{todo.attributes.id_penguji}</th>
-                <td>{todo.attributes.Nama}</td>
+                <th>{index+1}</th>
+                <td>{todo.attributes.nama}</td>
                 <td>{todo.attributes.NIP}</td>
                 <td>{todo.attributes.jabatan.data.attributes.nama_jabatan}</td>
                 <td>{todo.attributes.grade.data.attributes.nama_grade}</td>

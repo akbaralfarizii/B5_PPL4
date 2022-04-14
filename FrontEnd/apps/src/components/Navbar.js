@@ -7,6 +7,7 @@ import { IconContext } from 'react-icons/lib';
 import './Navbar.css';
 import Logo from "../asset/logoPLN.png";
 
+
 const Navbar = () => {
   const [sidebar, setSidebar] = useState(false);
 

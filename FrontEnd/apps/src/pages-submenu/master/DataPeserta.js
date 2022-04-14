@@ -40,7 +40,7 @@ function DataPeserta () {
         <div className='TabelDataPeserta'>
         <table>
             <tr>
-                <th>No.</th>
+                <th>No</th>
                 <th>Nama</th>
                 <th>NIP</th>
                 <th>Jabatan</th>
@@ -48,11 +48,11 @@ function DataPeserta () {
                 <th>Jenjang</th>
                 <th>Edit</th>
             </tr>
-            {todos.map((todo) => (
+            {todos.map((todo, index) => (
             <tbody>
               <tr>
-                <th>{todo.attributes.id_pendaftar}</th>
-                <td>{todo.attributes.Nama}</td>
+                <th>{index+1}</th>
+                <td>{todo.attributes.nama}</td>
                 <td>{todo.attributes.NIP}</td>
                 <td>{todo.attributes.jabatan.data.attributes.nama_jabatan}</td>
                 <td>{todo.attributes.grade.data.attributes.nama_grade}</td>
