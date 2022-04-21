@@ -5,7 +5,10 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
 // Master
 const DataPeserta = React.lazy(() => import('./views/master/DataPeserta/DataPeserta'))
+const InputDataPeserta = React.lazy(() => import('./views/master/DataPeserta/InputDataPeserta'))
+
 const DataPenguji = React.lazy(() => import('./views/master/DataPenguji/DataPenguji'))
+const InputDataPenguji = React.lazy(() => import('./views/master/DataPenguji/InputDataPenguji'))
 
 // Fit and Propper
 const PendaftaranFitAndPropper = React.lazy(() => import('./views/fitandpropper/PendaftaranFitAndPropper/PendaftaranFitAndPropper'))
@@ -32,7 +35,9 @@ const routes = [
 
   { path: '/master', name: 'Master', element: DataPenguji, exact: true },
   { path: '/master/datapeserta', name: 'Data Peserta', element: DataPeserta },
+  { path: '/master/datapeserta/inputdatapeserta', name: 'Input Data Peserta', element: InputDataPeserta },
   { path: '/master/datapenguji', name: 'Data Penguji', element: DataPenguji },
+  { path: '/master/datapenguji/inputdatapenguji', name: 'Input Data Penguji', element: InputDataPenguji },
 
   { path: '/fit&propper', name: 'Fit And Propper', element: PendaftaranFitAndPropper, exact: true },
   { path: '/fit&propper/pendaftaranfit&propper', name: 'Pendaftaran Fit And Propper', element: PendaftaranFitAndPropper },
