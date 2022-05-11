@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://192.168.137.1:1337/api/pegawais';
+const url = 'http://5d3b-103-209-131-27.ngrok.io/api/pegawais?populate=*';
 export const readTodos = () => axios.get(url);
 //api akbar : "http://192.168.137.1:1337/api/pegawais"
 
