@@ -31,7 +31,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path='/'  exact element={<Dashboard />} />
-          {/* <Route path="/master" exact element={<Master />} /> */}
+          <Route path="/master" exact element={<Master />} />
             <Route path="/master/data-peserta" exact element={<DataPeserta />} />
             <Route path="/master/data-penguji" exact element={<DataPenguji />} />
             <Route path="/master/input-data-peserta" exact element={<InputDataPeserta />} />

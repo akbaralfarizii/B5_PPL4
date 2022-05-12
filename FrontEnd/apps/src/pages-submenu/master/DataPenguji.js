@@ -20,7 +20,7 @@ function DataPenguji() {
         fetchData();
 
     }, []);
-
+    let nomor = 1;
     let navigate = useNavigate();
   return (
     <div className='container'>
@@ -50,7 +50,10 @@ function DataPenguji() {
                 <th>Jenjang</th>
                 <th>Edit</th>
             </tr>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 78571c6cf8c9067c49841a42979f2b5a320d4c86
             {todos.map((todo, index) => (
             <tbody>
               <tr>

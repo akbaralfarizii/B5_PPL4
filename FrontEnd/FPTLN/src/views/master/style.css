@@ -1,0 +1,95 @@
+.btn {
+    background-color: #dddddd; /* Blue background */
+    border: none; /* Remove borders */
+    color: black; /* White text */
+    padding: 10px 10px; /* Some padding */
+    font-size: 14px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    margin-bottom: 10px;
+    /* padding-top: 0px; */
+    border-radius: 5px;
+  }
+  
+.Icon-btn {
+    font-size: 18px;
+  }
+
+  .btn:hover {
+    background-color: #c4c4c4;
+  }
+  
+  .container {
+    margin-top: auto;
+  }
+
+.title {
+   display: flex;
+   background-color: #f2f2f2 ;
+   align-items: center;
+   padding: 5px;
+   font-size: 18px;
+  }
+  
+  .title-icon {
+   background-color: #f2f2f2 ;
+   margin-top: 3px;
+   padding: 5px;
+   font-size: 18px;
+  }
+  
+  .TabelDataPeserta table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .TabelDataPeserta td, th {
+  border: 1px solid #f2f2f2;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .TabelDataPeserta tr:nth-child(even) {
+    background-color: #f2f2f2;
+    text-align: center;
+  }
+  .locationBar{
+    background-color: cornflowerblue;
+    margin-top: auto;
+    padding: 10px;
+    color: #ffffff;
+  }
+  .body{
+    margin: 25px;
+  }
+  .text{
+    margin-left: 15px;
+  }
+  .button{
+    margin-left: 160px;
+    margin-top: 5px;
+  }
+  .SubmitButton{
+    margin-right: 5px;
+  }
+  .containerform{
+    background-color: #f2f2f2;
+    height: 15rem;
+    margin-top: 10px;
+  }
+  .textPath{
+    margin-left: 20px;
+    padding-top: 10px;
+  }
+  .nipform{
+    margin-top: 30px;
+    margin-left: 100px;
+  }
+  .label{
+
+    width: 25rem;
+    height: 30px;
+    margin-left: 2rem;
+
+  }

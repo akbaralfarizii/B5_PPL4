@@ -47,7 +47,7 @@ function DataPeserta () {
         <div className='TabelDataPeserta'>
         <table>
             <tr>
-                <th>No.</th>
+                <th>No</th>
                 <th>Nama</th>
                 <th>NIP</th>
                 <th>Jabatan</th>
