@@ -19,7 +19,7 @@ const PenilaianWawancara = React.lazy(() => import('./views/fitandpropper/Penila
 //Report
 const RekapNilaiFitAndPropper = React.lazy(() => import('./views/report/RekapNilaiFitAndPropper/RekapNilaiFitAndPropper'))
 const RekapManualNilaiFitAndPropper = React.lazy(() => import('./views/report/RekapManualNilaiFitAndPropper/RekapManualNilaiFitAndPropper'))
-const CetakNilaiFitAndPropper = React.lazy(() =>import('./views/report/CetakNilaiWawancara/CetakNilaiWawancara'))
+const CetakNilaiFitAndPropper = React.lazy(() =>import('./views/report/CetakNilaiFitAndPropper/CetakNilaiFitAndPropper'))
 const RekapNilaiWawancara = React.lazy(() => import('./views/report/RekapNilaiWawancara/RekapNilaiWawancara'))
 const CetakNilaiWawancara = React.lazy(() => import('./views/report/CetakNilaiWawancara//CetakNilaiWawancara'))
 

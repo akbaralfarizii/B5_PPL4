@@ -11,51 +11,64 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
+  CCard,
+  CCardBody,
+  CCardHeader,
 } from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilPeople, cilZoom } from '@coreui/icons'
 import { DocsCallout, DocsExample } from 'src/components'
 
 const PencarianFitAndPropper = () => {
   return (
     <>
-      <DocsExample href="forms/layout#gutters">
-        <CForm className="row g-3">
-          <CCol xs={12}>
-            <CFormLabel htmlFor="inputAddress">Input NIP Peserta</CFormLabel>
-            <CFormInput id="inputAddress" placeholder="NIP Peserta" />
-          </CCol>
-          <CCol xs={12}>
-            <CButton type="submit">Cari Peserta</CButton>
-          </CCol>
-        </CForm>
-      </DocsExample>
-      <DocsExample href="components/table">
-        <CTable>
+      <CCard className="mb-4">
+        <CCardHeader>
+          <CIcon icon={cilZoom} size="lg" />
+          <strong> Cari Fit & Propper</strong>
+        </CCardHeader>
+        <CCardBody>
+          <CForm className="row g-3">
+            <CCol xs={12}>
+              <CFormLabel htmlFor="inputAddress">Input NIP Peserta</CFormLabel>
+              <CFormInput id="inputAddress" placeholder="NIP Peserta" />
+            </CCol>
+            <CCol xs={12}>
+              <CButton className='text-white' color='info' type="submit">Cari Peserta</CButton>
+            </CCol>
+          </CForm>
+        </CCardBody>
+      </CCard>
+      <CCard>
+        <CTable bordered>
           <CTableHead>
             <CTableRow>
-              <CTableHeaderCell scope="col">No</CTableHeaderCell>
-              <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Jabatan Proyeksi</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Tanggal Uji</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Hasil Nilai</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Lihat Report Nilai</CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>No</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>NIP</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>Nama</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>Jabatan Proyeksi</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>Tanggal Uji</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>Hasil Nilai</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center>Lihat Report Nilai</center></CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
             <CTableRow>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>201511041</CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>201511041</center></CTableDataCell>
               <CTableDataCell>Hanhan Septian</CTableDataCell>
               <CTableDataCell>MANAGER SISTEM TRANSMISI</CTableDataCell>
-              <CTableDataCell>09-09-2022</CTableDataCell>
-              <CTableDataCell>Tidak Disaratkan (0)</CTableDataCell>
+              <CTableDataCell><center>09-09-2022</center></CTableDataCell>
+              <CTableDataCell><center>Tidak Disaratkan (0)</center></CTableDataCell>
               <CTableDataCell>
-                <CButton>Lihat Nilai</CButton>
+                <center>
+                  <CButton className='text-white' color='info'>Lihat Nilai</CButton>
+                </center>
               </CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>
-      </DocsExample>
+      </CCard>
     </>
   )
 }

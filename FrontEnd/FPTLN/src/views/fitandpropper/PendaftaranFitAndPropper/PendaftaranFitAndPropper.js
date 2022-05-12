@@ -21,6 +21,7 @@ import {
   cilSpeedometer,
   cilSpreadsheet,
   cilUser,
+  cilUserPlus,
 } from '@coreui/icons'
 import { DocsCallout, DocsExample } from 'src/components'
 import CIcon from '@coreui/icons-react'
@@ -28,11 +29,13 @@ import CIcon from '@coreui/icons-react'
   const PendaftaranFitAndPropper = () => {
     return (
       <>
-        <CButton className='text-white' color='info'>Kembali</CButton>
-        <DocsExample href="components/accordion">
-          <div className='mb-3'>
-            <CIcon icon={cilSpreadsheet}></CIcon><h6>Pendaftaran/ Updating Peserta Fit & Propper</h6><hr></hr>
-          </div>
+        <CButton className='text-white mb-3' color='info'>Kembali</CButton>
+        <CCard>
+          <CCardHeader>
+            <CIcon icon={cilUserPlus} size="lg" />
+            <strong> Pendaftaran/ Updating Peserta Fit & Propper</strong>
+          </CCardHeader>
+          <CCardBody>
           <div className='mb-5'>
             <h5><b>Input/ Updating Pendaftaran Peserta Fit & Propper</b></h5><hr></hr>
           </div>
@@ -195,7 +198,8 @@ import CIcon from '@coreui/icons-react'
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <CButton className='mt-3 text-white' type="submit" color="info">Submit Form</CButton>
           </div>
-        </DocsExample>
+        </CCardBody>
+        </CCard>
       </>
     )
   }

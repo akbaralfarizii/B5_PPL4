@@ -19,72 +19,72 @@ import { DocsCallout, DocsExample } from 'src/components'
 const AdministrasiUsers = () => {
   return (
     <>
-      <DocsExample>
-        <CTable striped>
+      <CCard>
+        <CTable striped bordered>
           <CTableHead>
             <CTableRow>
-              <CTableHeaderCell scope="col">No</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Edit Hak Akses</CTableHeaderCell>
-              <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Password</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Akses</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Administrasi Users</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Master</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Daftar FP</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Nilai FP</CTableHeaderCell>
-              <CTableHeaderCell scope="col">Report</CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Edit Hak Akses</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Password</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Akses</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Administrasi Users</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Master</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Daftar FP</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Nilai FP</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Report</b></center></CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>
             <CTableRow>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center></center>1</CTableDataCell>
               <CTableDataCell>
-                <CButton className='info'>Edit akses</CButton>
+                <center><CButton className='text-white' color='info'>Edit akses</CButton></center>
               </CTableDataCell>
-              <CTableDataCell>201511041</CTableDataCell>
+              <CTableDataCell><center>201511041</center></CTableDataCell>
               <CTableDataCell>Hanhan Septian</CTableDataCell>
               <CTableDataCell>hanhan12345</CTableDataCell>
-              <CTableDataCell>2</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center>2</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
             </CTableRow>
             <CTableRow>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center></center>1</CTableDataCell>
               <CTableDataCell>
-                <CButton className='info'>Edit akses</CButton>
+              <center><CButton className='text-white' color='info'>Edit akses</CButton></center>
               </CTableDataCell>
-              <CTableDataCell>201511041</CTableDataCell>
+              <CTableDataCell><center>201511041</center></CTableDataCell>
               <CTableDataCell>Hanhan Septian</CTableDataCell>
               <CTableDataCell>hanhan12345</CTableDataCell>
-              <CTableDataCell>2</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center>2</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
             </CTableRow>
             <CTableRow>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center></center>1</CTableDataCell>
               <CTableDataCell>
-                <CButton>Edit akses</CButton>
+              <center><CButton className='text-white' color='info'>Edit akses</CButton></center>
               </CTableDataCell>
-              <CTableDataCell>201511041</CTableDataCell>
+              <CTableDataCell><center>201511041</center></CTableDataCell>
               <CTableDataCell>Hanhan Septian</CTableDataCell>
               <CTableDataCell>hanhan12345</CTableDataCell>
-              <CTableDataCell>2</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
-              <CTableDataCell>0</CTableDataCell>
-              <CTableDataCell>1</CTableDataCell>
+              <CTableDataCell><center>2</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
+              <CTableDataCell><center>0</center></CTableDataCell>
+              <CTableDataCell><center>1</center></CTableDataCell>
             </CTableRow>
           </CTableBody>
         </CTable>
-      </DocsExample>
+      </CCard>
     </>
   )
 }
