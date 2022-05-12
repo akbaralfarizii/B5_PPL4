@@ -1,94 +1,203 @@
 import React from 'react'
 import {
+  CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableCaption,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-  CDropdown,
-  CDropdownToggle,
-  CDropdownMenu,
-  CDropdownItem,
-  CButton,
+  CForm,
   CFormInput,
-
-} from '@coreui/react'
+  CFormLabel,
+  CFormTextarea,
+  CRow,
+  CInputGroup,
+  CFormSelect,
+  CInputGroupText,
+  } from '@coreui/react'
+import {
+  cilNotes,
+  cilPaperclip,
+  cilSearch,
+  cilSpeedometer,
+  cilSpreadsheet,
+  cilUser,
+} from '@coreui/icons'
+import { DocsCallout, DocsExample } from 'src/components'
 import CIcon from '@coreui/icons-react'
-import { cilPeople } from '@coreui/icons'
 
-const PendaftaranFitAndPropper = () => {
-  return (
-    <CRow>
-      <CCol md={12}>
-          <h3>welcome to fit & propper Dashboard</h3>
-        <CCard className="mb-6">
-          <CCardHeader color="primary">
-            Dashboard / Jadwal
-          </CCardHeader>
-          <CCardBody>
-            <CRow className='align-self-center'>
-              <CCol sm="auto" >Pilih Bulan Tahun</CCol>
-              <CCol sm={5}>
-                  <CFormInput type="text" size="sm" placeholder="Date" aria-label="default input example"/>
-              </CCol>
-              <CCol sm="auto">
-                <CButton color="primary" type="submit">Go</CButton>
-              </CCol>
-            </CRow>
-            <CTable striped hover>
-              <CTableHead color="dark">
-                <CTableRow>
-                  <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Proyeksi</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Tanggal</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Penguji</CTableHeaderCell>
-                </CTableRow>
-              </CTableHead>
-              <CTableBody>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">1</CTableHeaderCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>201213123</CTableDataCell>
-                  <CTableDataCell>Leader</CTableDataCell>
-                  <CTableDataCell>grade atas</CTableDataCell>
-                  <CTableDataCell>masa depan</CTableDataCell>
-                  <CTableDataCell>Icon button</CTableDataCell>
-                </CTableRow>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">2</CTableHeaderCell>
-                  <CTableDataCell>Jacob</CTableDataCell>
-                  <CTableDataCell>21314123</CTableDataCell>
-                  <CTableDataCell>@fat</CTableDataCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>Otto</CTableDataCell>
-                  <CTableDataCell>@mdo</CTableDataCell>
-                </CTableRow>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                  <CTableDataCell>Larry the Bird</CTableDataCell>
-                  <CTableDataCell>12355435</CTableDataCell>
-                  <CTableDataCell>@twitter</CTableDataCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>Otto</CTableDataCell>
-                  <CTableDataCell>@mdo</CTableDataCell>
-                </CTableRow>
-              </CTableBody>
-            </CTable>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
-  )
-}
+  const PendaftaranFitAndPropper = () => {
+    return (
+      <>
+        <CButton className='text-white' color='info'>Kembali</CButton>
+        <DocsExample href="components/accordion">
+          <div className='mb-3'>
+            <CIcon icon={cilSpreadsheet}></CIcon><h6>Pendaftaran/ Updating Peserta Fit & Propper</h6><hr></hr>
+          </div>
+          <div className='mb-5'>
+            <h5><b>Input/ Updating Pendaftaran Peserta Fit & Propper</b></h5><hr></hr>
+          </div>
+          <CRow className="mb-3 ">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">NIP</CFormLabel>
+                <div className="col-sm-5">
+                  <CFormInput type="input" id="NIP" placeholder='Masukkan NIP Peserta'/>
+                </div>
+                <CButton type="button" color="info" variant="outline" id="button-addon2">Cek</CButton>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Nama</CFormLabel>
+                <div className="col-sm-10">
+                  <CFormInput type="input" id="Nama" placeholder='Masukkan Nama Peserta' />
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Jabatan</CFormLabel>
+                <div className="col-sm-10">
+                  <CFormInput type="input" id="NIP" placeholder='Masukkan Jabatan Peserta'/>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Grade</CFormLabel>
+                <div className="col-sm-5">
+                  <CFormInput type="input" id="NIP" placeholder='Masukkan Grade Peserta'/>
+                </div>
+              </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Date</CFormLabel>
+                <div className="col-sm-5">
+                  <CFormInput type="input" id="NIP" placeholder='Masukkan Tanggal'/>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Proyeksi</CFormLabel>
+                <div className="col-sm-10">
+                  <CFormInput type="input" id="NIP" placeholder='Masukkan Proyeksi'/>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Jenjang Jabatan</CFormLabel>
+                <div className="col-sm-5">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Jenis Fit and Propper</CFormLabel>
+                <div className="col-sm-5">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Pilih Uraian Jabatan</CFormLabel>
+                <div className="col-sm-6">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Upload PPT *.ppt/.pptx</CFormLabel>
+                <div className="col-sm-10">
+                  <CFormInput type="file" id="inputGroupFile02" />
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Upload CV *.doc/.docs</CFormLabel>
+                <div className="col-sm-10">
+                  <CFormInput type="file" id="inputGroupFile02" />
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Penguji 1</CFormLabel>
+                <div className="col-sm-6">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Penguji 2</CFormLabel>
+                <div className="col-sm-6">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Penguji 3</CFormLabel>
+                <div className="col-sm-6">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <CRow className="mb-3">
+            <CInputGroup>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Penguji 4</CFormLabel>
+                <div className="col-sm-6">
+                  <CFormSelect aria-label="Default select example">
+                    <option>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </CFormSelect>
+                </div>
+            </CInputGroup>
+          </CRow>
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+            <CButton className='mt-3 text-white' type="submit" color="info">Submit Form</CButton>
+          </div>
+        </DocsExample>
+      </>
+    )
+  }
 
-export default PendaftaranFitAndPropper
+  export default PendaftaranFitAndPropper

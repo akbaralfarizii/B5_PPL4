@@ -61,11 +61,11 @@ function DataPeserta () {
                   <CTableRow>
                     <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
                     <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
-                    {/* <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawais.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawais.data.attributes.Grade_Pendidikan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
-                    <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell> */}
+                    <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
                   </CTableRow>
                 </CTableBody>
               ))}

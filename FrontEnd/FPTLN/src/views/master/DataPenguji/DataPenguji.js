@@ -47,11 +47,9 @@ function DataPenguji() {
               <CTableHead color="dark">
                 <CTableRow>
                   <CTableHeaderCell scope="col">No</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Grade</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Edit</CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
@@ -62,8 +60,7 @@ function DataPenguji() {
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.Grade_Pendidikan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                    
                     <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
                   </CTableRow>
                 </CTableBody>
