@@ -6,6 +6,9 @@ import * as api from '../api';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { CButton, CCard, CCardBody, CCardHeader, CFormInput, CFormLabel, CInputGroup } from "@coreui/react";
+import CIcon from "@coreui/icons-react";
+import { cilUserPlus} from '@coreui/icons'
 
 const InputDataPeserta  = () => {
     let navigate = useNavigate ()
@@ -25,33 +28,37 @@ const InputDataPeserta  = () => {
         })
     }
     return(
-        <div className='container'>
-            <div className="body">
-                <div>
-                    <button className='btn' onClick={() => {navigate ('/master/datapeserta')}} ><BsIcons.BsFillPersonFill className='Icon-btn'/> KEMBALI</button>
-                </div>
-                <div className="containerform">
-                    <div className="textPath">
-                        <AiIcons.AiOutlineForm className='icon-btn' /> <b>Tambah / Update Data Peserta</b>
-                    </div> 
-                    <div className="textPath">
-                       <b>Input Data Peserta</b> 
-                    </div>
-                    <div className="nipform">
-                        <form>
-                            <label >
-                                <b>NIP</b><input type="text" name="NIP" className="label " onChange={handleFormChange}/>
-                            </label>
-                        </form>
-                    </div>
-                        <div className="button" >
-                            <button className='SubmitButton' onClick={(e) => {this.handleDeleteData()}}  >CEK</button>
-                            <button className='SubmitButton' onClick={() => {navigate ('/master/data-peserta')}} >MANUAL</button>
-                            <button onClick={() => {navigate ('/master/data-peserta')}} >BATAL</button>
+        <>
+        <CButton className='bg-info text-white' onClick={() => {navigate ('/master/datapeserta')}}>Kembali</CButton>
+            <CCard>
+                <CCardHeader className="bg-dark text-white">
+                    <CIcon icon={cilUserPlus}/>
+                    <strong>Tambah / Update Data Peserta</strong>
+                </CCardHeader>
+                <CCardBody>
+                    <h4>Input Data Peserta</h4><hr></hr>
+                    <CInputGroup className="mt-5">
+                        <CFormLabel className="col-sm-1 col-form-label"><h5><b>NIP</b></h5></CFormLabel>
+                        <div className="col-sm-6">
+                            <CFormInput type="input" id="NIP" placeholder="Masukkan NIP"></CFormInput>
                         </div>
-                </div>
-            </div>
-        </div>
+                    </CInputGroup>
+                    <CInputGroup className="mt-3">
+                        <div className="col-sm-1 "></div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
+                        </div>
+                    </CInputGroup>
+
+                </CCardBody>
+            </CCard>
+        </>
 
     )
 }

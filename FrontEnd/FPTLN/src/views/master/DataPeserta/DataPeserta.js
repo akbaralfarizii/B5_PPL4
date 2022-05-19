@@ -36,16 +36,19 @@ function DataPeserta () {
 
   return (
     <>
-    <CButton onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}><CIcon icon={cilUserFollow}></CIcon>Tambah Data Peserta</CButton>
+    <CButton className='bg-info text-white' onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}>
+      <CIcon icon={cilUserFollow}/>
+      <strong>Tambah Data Peserta</strong> 
+    </CButton>
     <CRow>
       <CCol md={12}>
         <CCard className="mb-4">
-          <CCardHeader>
+          <CCardHeader className='bg-dark text-white'>
             <CIcon icon={cilPeople} size="lg" />
             <strong> Data Peserta</strong>
           </CCardHeader>
           <CCardBody>
-            <CTable striped hover>
+            <CTable striped hover bordered>
               <CTableHead color="dark">
                 <CTableRow>
                   <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
@@ -61,11 +64,11 @@ function DataPeserta () {
                 <CTableBody>
                   <CTableRow>
                     <CTableDataCell><center>{index+1}</center></CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.fitnproper.data.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                     <CTableDataCell>
                       <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
                     </CTableDataCell>
