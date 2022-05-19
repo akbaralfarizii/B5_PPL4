@@ -25,34 +25,38 @@ const InputDataPeserta  = () => {
         })
     }
     return(
-        <div className='container'>
-            <div className="body">
-                <div>
-                    <button className='btn' onClick={() => {navigate ('/master/datapeserta')}} ><BsIcons.BsFillPersonFill className='Icon-btn'/> KEMBALI</button>
-                </div>
-                <div className="containerform">
-                    <div className="textPath">
-                        <AiIcons.AiOutlineForm className='icon-btn' /> <b>Tambah / Update Data Peserta</b>
-                    </div> 
-                    <div className="textPath">
-                       <b>Input Data Peserta</b> 
-                    </div>
-                    <div className="nipform">
-                        <form>
-                            <label >
-                                <b>NIP</b><input type="text" name="NIP" className="label " onChange={handleFormChange}/>
-                            </label>
-                        </form>
-                    </div>
-                        <div className="button" >
-                            <button className='SubmitButton' onClick={(e) => {this.handleDeleteData()}}  >CEK</button>
-                            <button className='SubmitButton' onClick={() => {navigate ('/master/data-peserta')}} >MANUAL</button>
-                            <button onClick={() => {navigate ('/master/data-peserta')}} >BATAL</button>
-                        </div>
-                </div>
-            </div>
-        </div>
-
+        <CRow>
+          <CCol xs={12}>
+            <CCard className="mb-4">
+              <CCardHeader>
+                <strong>Tambah Peserta</strong>
+              </CCardHeader>
+              <CCardBody>
+                  <CForm onSubmit={this.postData}>
+                    <CRow className="mb-3">
+                      <CFormLabel htmlFor="inputEmail3" className="col-sm-2 col-form-label">
+                        NIP
+                      </CFormLabel>
+                      <CCol sm={10}>
+                        <CFormInput type="number" id="inputEmail3" name='NIP' placeholder='Masukkan NIP' onChange={this.handleFormChange} />
+                      </CCol>
+                    </CRow>
+                    <CRow className="mb-3">
+                      <CFormLabel htmlFor="inputPassword3" className="col-sm-2 col-form-label">
+                        Nama
+                      </CFormLabel>
+                      <CCol sm={10}>
+                        <CFormInput type="password" id="inputPassword3" placeholder='Nama Pegawai Akan Muncul Disini' disabled />
+                      </CCol>
+                    </CRow>
+                    <CButton type="submit" style={{width:'100%'}}>Submit</CButton>
+                  </CForm>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      )
+  }
     )
 }
 export default InputDataPeserta;

@@ -53,7 +53,7 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: 'Pencarian Fit & Propper',
+        name: 'Penilaian Fit & Propper',
         to: '/fit&propper/pencarianfit&propper',
       },
       {

@@ -7,7 +7,6 @@ import {
   CRow,
   CTable,
   CTableBody,
-  CTableCaption,
   CTableDataCell,
   CTableHead,
   CTableHeaderCell,
@@ -15,7 +14,7 @@ import {
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilPeople } from '@coreui/icons'
+import { cilPeople, cilPen, cilUserFollow } from '@coreui/icons'
 import '../style.css';
 import * as api from '../api';
 import { useEffect, useState } from 'react';
@@ -34,34 +33,36 @@ function DataPenguji() {
     }, []);
     let navigate = useNavigate();
   return (
+    <>
+     <CButton onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}><CIcon icon={cilUserFollow}></CIcon>Tambah Data Penguji</CButton>
     <CRow>
-      <CButton color="secondary" variant="outline">Secondary</CButton>
       <CCol md={12}>
         <CCard className="mb-4">
           <CCardHeader>
             <CIcon icon={cilPeople} size="lg" />
-            <strong> Data Peserta</strong>
+            <strong> Data Penguji</strong>
           </CCardHeader>
           <CCardBody>
             <CTable striped hover>
               <CTableHead color="dark">
                 <CTableRow>
-                  <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Edit</CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Edit</b></center></CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               {todos.map((todo, index) => (  
                 <CTableBody>
                   <CTableRow>
-                    <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
-                    <CTableDataCell>{todo.id}</CTableDataCell>
-                    {/* <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell> */}
-                    
-                    <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
+                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                    <CTableDataCell><center>{todo.attributes.Penguji.pegawai.data.attributes.NIP}</center></CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Penguji.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Penguji.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>
+                      <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
+                    </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
               ))}
@@ -70,45 +71,8 @@ function DataPenguji() {
         </CCard>
       </CCol>
     </CRow>
+    </>
 
-    // <div className='container'>
-    //     <div className='body'>
-    //     <div>
-    //         <button className='btn'onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Penguji</button>
-    //     </div>
-        
-    //     <div className='side'>
-    //         <h3><BsIcons.BsFillPersonFill />  Data Penguji</h3>
-    //     </div>
-
-    //     <div className='TabelDataPeserta'>
-    //     <table>
-    //         <tr className='table'>
-    //             <th>No</th>
-    //             <th>Nama</th>
-    //             <th>NIP</th>
-    //             <th>Jabatan</th>
-    //             <th>Edit</th>
-    //         </tr>
-    //         {todos.map((todo, index) => (
-    //         <tbody>
-    //           <tr>
-    //             <th>{index+1}</th>
-    //             <td>{todo.id}</td>
-    //             <td>{todo.attributes.id_penguji}</td>
-    //             {/* <td>{todo.attributes.pegawais.data.attributes.NIP}</td> */}
-    //             {/* <td>{todo.attributes.pegawai.data.attributes.nama}</td>
-    //             <td>{todo.attributes.pegawai.data.attributes.NIP}</td>
-    //             <td>{todo.attributes.pegawais.data.attributes.jabatan.data.attributes.nama_jabatan}</td> */}
-    //             <td><button><AiIcons.AiOutlineForm className='Icon-btn'/></button></td>
-    //           </tr>
-    //         </tbody>
-    //       ))}
-    //     </table>
-    //     </div>
-    // </div>
-    //     </div>
-        
   );
 }
 
