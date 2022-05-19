@@ -43,13 +43,13 @@ const PencarianFitAndPropper = () => {
         <CTable bordered>
           <CTableHead>
             <CTableRow>
-              <CTableHeaderCell scope="col"><center>No</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>NIP</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>Nama</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>Jabatan Proyeksi</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>Tanggal Uji</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>Hasil Nilai</center></CTableHeaderCell>
-              <CTableHeaderCell scope="col"><center>Lihat Report Nilai</center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Jabatan Proyeksi</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Tanggal Uji</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Hasil Nilai</b></center></CTableHeaderCell>
+              <CTableHeaderCell scope="col"><center><b>Lihat Report Nilai</b></center></CTableHeaderCell>
             </CTableRow>
           </CTableHead>
           <CTableBody>

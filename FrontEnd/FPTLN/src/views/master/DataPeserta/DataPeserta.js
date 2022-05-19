@@ -15,7 +15,7 @@ import {
   CButton,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilPeople } from '@coreui/icons'
+import { cilPen, cilPeople, cilUserFollow } from '@coreui/icons'
 import '../style.css';
 import * as api from '../api';
 import { useEffect, useState } from 'react';
@@ -35,8 +35,9 @@ function DataPeserta () {
   let navigate = useNavigate();
 
   return (
+    <>
+    <CButton onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}><CIcon icon={cilUserFollow}></CIcon>Tambah Data Peserta</CButton>
     <CRow>
-      <CButton color="secondary" variant="outline">Secondary</CButton>
       <CCol md={12}>
         <CCard className="mb-4">
           <CCardHeader>
@@ -47,25 +48,27 @@ function DataPeserta () {
             <CTable striped hover>
               <CTableHead color="dark">
                 <CTableRow>
-                  <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Grade</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Edit</CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Grade</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Jenjang</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Edit</b></center></CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               {todos.map((todo, index) => (  
                 <CTableBody>
                   <CTableRow>
-                    <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.Grade_Pendidikan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
-                    <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
+                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Peserta.pegawai.data.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.fitnproper.data.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                    <CTableDataCell>
+                      <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
+                    </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
               ))}
@@ -74,47 +77,7 @@ function DataPeserta () {
         </CCard>
       </CCol>
     </CRow>
-    // <div className='container'>
-    //     <div className='body'>
-    //     <div>
-    //         <button className='btn' onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}><BsIcons.BsFillPersonFill className='Icon-btn'/> Tambah Data Peserta</button>  
-    //     </div>
-    //     <div className='title'>
-    //         <div className='title-icon'>
-    //             <BsIcons.BsFillPersonFill />
-    //         </div>
-    //         <h3>Data Peserta</h3>
-    //     </div>
-
-    //     <div className='TabelDataPeserta'>
-    //     <table>
-    //         <tr>
-    //             <th>No</th>
-    //             <th>NIP</th>
-    //             <th>Nama</th>
-    //             <th>Jabatan</th>
-    //             <th>Grade Pendidikan</th>
-    //             <th>Jabatan Tujuan</th>
-    //             <th>Edit</th>
-    //         </tr>
-    //         {todos.map((todo, index) => (
-    //         <tbody>
-    //           <tr>
-    //             <th>{index+1}</th>
-    //             <td>{todo.attributes.pegawai.data.attributes.NIP}</td>
-    //             <td>{todo.attributes.pegawai.data.attributes.nama}</td>
-    //             <td>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</td>
-    //             <td>{todo.attributes.pegawai.data.attributes.Grade_Pendidikan}</td>
-    //             <td>{todo.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</td>
-    //             <td><button><AiIcons.AiOutlineForm className='Icon-btn'/></button></td>
-    //           </tr>
-    //         </tbody>
-    //       ))}
-            
-    //     </table>
-    //     </div>
-    // </div>
-    //     </div>
+    </>
         
   );
 }
