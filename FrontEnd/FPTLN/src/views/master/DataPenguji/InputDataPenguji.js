@@ -3,37 +3,47 @@ import * as BsIcons from 'react-icons/bs';
 import * as AiIcons from 'react-icons/ai';
 import '../style.css';
 import { useNavigate } from "react-router-dom";
+import * as api from '../api';
+import { useEffect, useState } from 'react';
+import axios from "axios";
+import { CButton, CCard, CCardBody, CCardHeader, CFormInput, CFormLabel, CInputGroup } from "@coreui/react";
+import CIcon from "@coreui/icons-react";
+import { cilUserPlus} from '@coreui/icons'
 
 function InputDataPenguji () {
     let navigate = useNavigate();
     return(
-        <div className='container'>
-            <div className="body">
-                <div>
-                    <button className='btn' onClick={() => {navigate ('/master/datapenguji')}} ><BsIcons.BsFillPersonFill className='Icon-btn'/> KEMBALI</button>
-                </div>
-                <div className="containerform">
-                    <div className="textPath">
-                        <AiIcons.AiOutlineForm className='icon-btn' /> <b>Tambah / Update Data Penguji</b>
-                    </div> 
-                    <div className="textPath">
-                       <b>Input Data Penguji</b> 
-                    </div>
-                    <div className="nipform">
-                        <form>
-                            <label >
-                                <b>NIP</b><input type="text" name="NIP" className="label"/>
-                            </label>
-                        </form>
-                    </div>
-                        <div className="button">
-                            <input type="submit" value="CEK" className="SubmitButton"/>
-                            <input type="submit" value="MANUAL" className="SubmitButton"/>
-                            <input type="submit" value="BATAL" />
+        <>
+        <CButton className='bg-info text-white' onClick={() => {navigate ('/master/datapenguji')}}>Kembali</CButton>
+            <CCard>
+                <CCardHeader className="bg-dark text-white">
+                    <CIcon icon={cilUserPlus}/>
+                    <strong>Tambah / Update Data Penguji</strong>
+                </CCardHeader>
+                <CCardBody>
+                    <h4>Input Data Penguji</h4><hr></hr>
+                    <CInputGroup className="mt-5">
+                        <CFormLabel className="col-sm-1 col-form-label"><h5><b>NIP</b></h5></CFormLabel>
+                        <div className="col-sm-6">
+                            <CFormInput type="input" id="NIP" placeholder="Masukkan NIP"></CFormInput>
                         </div>
-                </div>
-            </div>
-        </div>
+                    </CInputGroup>
+                    <CInputGroup className="mt-3">
+                        <div className="col-sm-1 "></div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
+                        </div>
+                    </CInputGroup>
+
+                </CCardBody>
+            </CCard>
+        </>
 
     )
 }

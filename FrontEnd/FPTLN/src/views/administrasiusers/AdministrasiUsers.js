@@ -15,11 +15,19 @@ import {
   CButton
 } from '@coreui/react'
 import { DocsCallout, DocsExample } from 'src/components'
+import CIcon from '@coreui/icons-react'
+import {
+  cilUser
+} from '@coreui/icons'
 
 const AdministrasiUsers = () => {
   return (
     <>
       <CCard>
+        <CCardHeader className='bg-dark text-white'>
+          <CIcon icon={cilUser}></CIcon>
+          <strong> Administrasi User</strong>
+        </CCardHeader>
         <CTable striped bordered>
           <CTableHead>
             <CTableRow>

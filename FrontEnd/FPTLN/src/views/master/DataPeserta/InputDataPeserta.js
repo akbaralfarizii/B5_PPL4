@@ -6,6 +6,9 @@ import * as api from '../api';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { CButton, CCard, CCardBody, CCardHeader, CFormInput, CFormLabel, CInputGroup } from "@coreui/react";
+import CIcon from "@coreui/icons-react";
+import { cilUserPlus} from '@coreui/icons'
 
 const InputDataPeserta  = () => {
     let navigate = useNavigate ()
@@ -25,38 +28,38 @@ const InputDataPeserta  = () => {
         })
     }
     return(
-        <CRow>
-          <CCol xs={12}>
-            <CCard className="mb-4">
-              <CCardHeader>
-                <strong>Tambah Peserta</strong>
-              </CCardHeader>
-              <CCardBody>
-                  <CForm onSubmit={this.postData}>
-                    <CRow className="mb-3">
-                      <CFormLabel htmlFor="inputEmail3" className="col-sm-2 col-form-label">
-                        NIP
-                      </CFormLabel>
-                      <CCol sm={10}>
-                        <CFormInput type="number" id="inputEmail3" name='NIP' placeholder='Masukkan NIP' onChange={this.handleFormChange} />
-                      </CCol>
-                    </CRow>
-                    <CRow className="mb-3">
-                      <CFormLabel htmlFor="inputPassword3" className="col-sm-2 col-form-label">
-                        Nama
-                      </CFormLabel>
-                      <CCol sm={10}>
-                        <CFormInput type="password" id="inputPassword3" placeholder='Nama Pegawai Akan Muncul Disini' disabled />
-                      </CCol>
-                    </CRow>
-                    <CButton type="submit" style={{width:'100%'}}>Submit</CButton>
-                  </CForm>
-              </CCardBody>
+        <>
+        <CButton className='bg-info text-white' onClick={() => {navigate ('/master/datapeserta')}}>Kembali</CButton>
+            <CCard>
+                <CCardHeader className="bg-dark text-white">
+                    <CIcon icon={cilUserPlus}/>
+                    <strong>Tambah / Update Data Peserta</strong>
+                </CCardHeader>
+                <CCardBody>
+                    <h4>Input Data Peserta</h4><hr></hr>
+                    <CInputGroup className="mt-5">
+                        <CFormLabel className="col-sm-1 col-form-label"><h5><b>NIP</b></h5></CFormLabel>
+                        <div className="col-sm-6">
+                            <CFormInput type="input" id="NIP" placeholder="Masukkan NIP"></CFormInput>
+                        </div>
+                    </CInputGroup>
+                    <CInputGroup className="mt-3">
+                        <div className="col-sm-1 "></div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
+                        </div>
+                        <div className="col-sm-1">
+                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
+                        </div>
+                    </CInputGroup>
+
+                </CCardBody>
             </CCard>
-          </CCol>
-        </CRow>
-      )
-  }
+        </>
+
     )
 }
 export default InputDataPeserta;

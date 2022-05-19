@@ -23,7 +23,7 @@ const PencarianFitAndPropper = () => {
   return (
     <>
       <CCard className="mb-4">
-        <CCardHeader>
+        <CCardHeader className='bg-dark text-white'>
           <CIcon icon={cilZoom} size="lg" />
           <strong> Cari Fit & Propper</strong>
         </CCardHeader>
@@ -34,7 +34,7 @@ const PencarianFitAndPropper = () => {
               <CFormInput id="inputAddress" placeholder="NIP Peserta" />
             </CCol>
             <CCol xs={12}>
-              <CButton className='text-white' color='info' type="submit">Cari Peserta</CButton>
+              <CButton className='text-white btn-info' type="submit">Cari Peserta</CButton>
             </CCol>
           </CForm>
         </CCardBody>
@@ -62,7 +62,7 @@ const PencarianFitAndPropper = () => {
               <CTableDataCell><center>Tidak Disaratkan (0)</center></CTableDataCell>
               <CTableDataCell>
                 <center>
-                  <CButton className='text-white' color='info'>Lihat Nilai</CButton>
+                  <CButton className='text-white btn-info'>Lihat Nilai</CButton>
                 </center>
               </CTableDataCell>
             </CTableRow>

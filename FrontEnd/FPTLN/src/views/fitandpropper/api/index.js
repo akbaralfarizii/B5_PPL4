@@ -4,9 +4,19 @@ import axios from 'axios';
 const urlpeserta = 'http://10.50.158.181:1337/api/pendaftars?populate[0]=pegawai.jabatan&populate[1]=pegawai.grade&populate[2]=pegawai.jenjang';
 export const Peserta = () => axios.get(urlpeserta);
 
+// const urlpeserta = 'http://10.50.158.181:1337/api/pendaftars?populate[0]=Peserta.pegawai.jabatan&populate[1]=Peserta.pegawai.grade&populate[2]=fitnproper.Jenjang_jabatan_tujuan.jenjang';
+// export const Peserta = () => axios.get(urlpeserta);
+
+
 //--Data Penguji
 const urlpenguji = 'http://10.50.158.181:1337/api/pengujis?populate[0]=pegawai.jabatan';
 export const Penguji = () => axios.get(urlpenguji);
+
+const urljabatan = 'http://10.50.158.181:1337/api/jabatans';
+export const jabatan = () => axios.get(urljabatan);
+
+const urlproyeksi = 'http://10.50.158.181:1337/api/jabatans';
+export const proyeksi = () => axios.get(urlproyeksi);
 
 //--Jadwal Fit and Proper
 // const urlpenguji = 'http://localhost:1337/api/pendaftars?populate[0]=Peserta.pegawai.jabatan&populate[1]=fitnproper.Jenjang_jabatan_tujuan.jenjang&populate[2]=fitnproper.fit_n_proper.proyeksi';

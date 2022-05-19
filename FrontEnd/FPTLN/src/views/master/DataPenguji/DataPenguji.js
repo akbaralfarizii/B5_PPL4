@@ -34,16 +34,19 @@ function DataPenguji() {
     let navigate = useNavigate();
   return (
     <>
-     <CButton onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}><CIcon icon={cilUserFollow}></CIcon>Tambah Data Penguji</CButton>
+      <CButton className='bg-info text-white' onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}>
+        <CIcon icon={cilUserFollow}/>
+        <strong>Tambah Data Penguji</strong>
+      </CButton>
     <CRow>
       <CCol md={12}>
         <CCard className="mb-4">
-          <CCardHeader>
+          <CCardHeader className='bg-dark text-white'>
             <CIcon icon={cilPeople} size="lg" />
             <strong> Data Penguji</strong>
           </CCardHeader>
           <CCardBody>
-            <CTable striped hover>
+            <CTable striped hover bordered>
               <CTableHead color="dark">
                 <CTableRow>
                   <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
@@ -57,9 +60,9 @@ function DataPenguji() {
                 <CTableBody>
                   <CTableRow>
                     <CTableDataCell><center>{index+1}</center></CTableDataCell>
-                    <CTableDataCell><center>{todo.attributes.Penguji.pegawai.data.attributes.NIP}</center></CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Penguji.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Penguji.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell><center>{todo.attributes.pegawai.data.attributes.NIP}</center></CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>
                       <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
                     </CTableDataCell>
