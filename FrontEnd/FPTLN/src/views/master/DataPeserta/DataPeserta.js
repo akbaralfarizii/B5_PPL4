@@ -41,7 +41,7 @@ function DataPeserta () {
         <CCard className="mb-4">
           <CCardHeader>
             <CIcon icon={cilPeople} size="lg" />
-            <strong> Data Peserta</strong>
+            <strong> Data Peserta {todo.attributes.pegawais.data.attributes.nama}</strong>
           </CCardHeader>
           <CCardBody>
             <CTable striped hover>
@@ -60,10 +60,10 @@ function DataPeserta () {
                 <CTableBody>
                   <CTableRow>
                     <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.id}</CTableDataCell>
+                    {/* <CTableDataCell>{todo.attributes.pegawais.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawais.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.Grade_Pendidikan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawais.data.attributes.Grade_Pendidikan}</CTableDataCell> */}
                     <CTableDataCell>{todo.attributes.Jenjang_jabatan_tujuan.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                     <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
                   </CTableRow>

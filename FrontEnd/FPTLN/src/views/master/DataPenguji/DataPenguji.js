@@ -57,9 +57,9 @@ function DataPenguji() {
                 <CTableBody>
                   <CTableRow>
                     <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.id}</CTableDataCell>
+                    {/* <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell> */}
                     
                     <CTableDataCell><CButton color="secondary" variant="outline">Secondary</CButton></CTableDataCell>
                   </CTableRow>
