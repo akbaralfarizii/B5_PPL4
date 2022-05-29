@@ -13,41 +13,79 @@ import {
   CTableHeaderCell,
   CTableRow,
   CButton,
+  CFormInput,
+  CInputGroup,
+  CFormLabel,
 } from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilPen, cilPeople, cilUserFollow } from '@coreui/icons'
+import * as api from '../api';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
-const RekapNilaiWawancara = () => {
+function RekapNilaiWawancara () {
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.NilaiWawancara();
+      const arr = result.data.data;
+      setTodos(arr);
+    };
+    fetchData();
+  }, []);
+
   return (
+    <>
     <CRow>
-      <CCol xs={12}>
-        <CCard className="mb-4">
-          <CCardBody>
-          <CCardHeader>
-              <strong>Rekap Penilaian Peserta Wawancara</strong>
+      <CCol md={12}>
+      <CCard>
+            <CCardHeader className='bg-info text-white'><b>Data User</b>
             </CCardHeader>
-            <CTable striped>
-              <CTableHead>
+            <CCardBody>
+              <CInputGroup>
+                <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Bulan Tahun</b></CFormLabel>
+                  <div className='col-sm-4'>
+                    <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
+                  </div>
+                  <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
+              </CInputGroup>
+            </CCardBody>
+          </CCard>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <CIcon icon={cilPeople} size="lg" />
+            <strong> Report Nilai Peserta Wawancara</strong>
+          </CCardHeader>
+          <CCardBody>
+            <CTable striped hover>
+              <CTableHead color="dark">
                 <CTableRow>
                   <CTableHeaderCell scope="col">No</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">NIP</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Proyeksi</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Tgl Fit Proper</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Tgl Wawancara</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Penguji</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Nilai</CTableHeaderCell>
                 </CTableRow>
-              </CTableHead>
-              <CTableBody>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">1</CTableHeaderCell>
-                  <CTableDataCell>Akbar Alfarisi</CTableDataCell>
-                  <CTableDataCell>201511049</CTableDataCell>
-                  <CTableDataCell>test</CTableDataCell>
-                  <CTableDataCell>Test</CTableDataCell>
-                  <CTableDataCell>19-05-2022</CTableDataCell>
-                  <CTableDataCell>-</CTableDataCell>
-                  <CTableDataCell>                  
+                </CTableHead>
+              {todos.map((todo, index) => (  
+                <CTableBody>
+                  <CTableRow>
+                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Proyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Jenjang_Jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
+                    <CTableDataCell>Penguji</CTableDataCell>
+                    {/* <CTableDataCell>
+                      <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
+                    </CTableDataCell> */}
+                    <CTableDataCell>                  
                     <Link to={'/report/detailreport'}>
                     <CButton
                       color='info'
@@ -57,14 +95,16 @@ const RekapNilaiWawancara = () => {
                     </CButton>
                   </Link>
                   </CTableDataCell>
-                </CTableRow>
-              </CTableBody>
+                  </CTableRow>
+                </CTableBody>
+              ))}
             </CTable>
           </CCardBody>
         </CCard>
       </CCol>
     </CRow>
-  )
+    </>
+  );
 }
 
 export default RekapNilaiWawancara
