@@ -1,77 +1,66 @@
-import React from 'react'
-import {
-  CCard,
-  CCardBody,
-  CCardHeader,
-  CCol,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableCaption,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-} from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilPeople } from '@coreui/icons'
+import { CButton, CCard, CCardBody, CCardHeader, CCol, CForm, CFormInput, CFormLabel, CFormSelect, CInputGroup, CRow, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react'
+import React from 'react'
+import { cilCalendar, cilCalendarCheck, cilSpreadsheet } from '@coreui/icons'
 
 const RekapNilaiFitAndPropper = () => {
   return (
-    <CRow>
-      <CCol md={12}>
-        <CCard className="mb-4">
-          <CCardHeader>
-            <CIcon icon={cilPeople} size="lg" />
-            <strong> Data Peserta</strong>
-          </CCardHeader>
-          <CCardBody>
-            <CTable striped hover>
-              <CTableHead color="dark">
-                <CTableRow>
-                  <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Grade</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Edit</CTableHeaderCell>
-                </CTableRow>
-              </CTableHead>
-              <CTableBody>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">1</CTableHeaderCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>201213123</CTableDataCell>
-                  <CTableDataCell>Leader</CTableDataCell>
-                  <CTableDataCell>grade atas</CTableDataCell>
-                  <CTableDataCell>masa depan</CTableDataCell>
-                  <CTableDataCell>Icon button</CTableDataCell>
-                </CTableRow>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">2</CTableHeaderCell>
-                  <CTableDataCell>Jacob</CTableDataCell>
-                  <CTableDataCell>21314123</CTableDataCell>
-                  <CTableDataCell>@fat</CTableDataCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>Otto</CTableDataCell>
-                  <CTableDataCell>@mdo</CTableDataCell>
-                </CTableRow>
-                <CTableRow>
-                  <CTableHeaderCell scope="row">3</CTableHeaderCell>
-                  <CTableDataCell>Larry the Bird</CTableDataCell>
-                  <CTableDataCell>12355435</CTableDataCell>
-                  <CTableDataCell>@twitter</CTableDataCell>
-                  <CTableDataCell>Mark</CTableDataCell>
-                  <CTableDataCell>Otto</CTableDataCell>
-                  <CTableDataCell>@mdo</CTableDataCell>
-                </CTableRow>
-              </CTableBody>
-            </CTable>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+    <>
+      <CInputGroup>
+        <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Tanggal</b></CFormLabel>
+        <div className='col-sm-7'>
+          <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
+        </div>
+          <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
+      </CInputGroup>
+      <CRow className='mt-5'>
+        <CCol>
+          <CCard>
+            <CCardHeader className='bg-dark text-white'>
+              <CIcon icon={cilSpreadsheet}/>
+              <strong> Report Nilai Peserta Fit & Propper</strong>
+            </CCardHeader>
+            <CCardBody>
+              <CTable striped bordered>
+                <CTableHead>
+                  <CTableRow>
+                    <CTableHeaderCell scope='col'><center><b>No</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Nama</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Jabatan</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Proyeksi</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Jenjang</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Tanggal</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Penguji</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Nilai</b></center></CTableHeaderCell>
+                  </CTableRow>
+                </CTableHead>
+                <CTableBody>
+                  <CTableRow>
+                    <CTableDataCell><center>1</center></CTableDataCell>
+                    <CTableDataCell>Hanhan</CTableDataCell>
+                    <CTableDataCell><center>201511041</center></CTableDataCell>
+                    <CTableDataCell>Manager</CTableDataCell>
+                    <CTableDataCell>Manager Atas</CTableDataCell>
+                    <CTableDataCell>Jenjang Teuing</CTableDataCell>
+                    <CTableDataCell><center>09-09-2022</center></CTableDataCell>
+                    <CTableDataCell>Zulaikha</CTableDataCell>
+                    <CTableDataCell>
+                      <center>
+                        <CButton className='btn btn-md btn-info text-white'>
+                          <CIcon icon={cilSpreadsheet}></CIcon>
+                          <strong> Lihat Nilai</strong>
+                        </CButton>
+                      </center>
+                    </CTableDataCell>
+                  </CTableRow>
+                </CTableBody>
+              </CTable>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
+    </>
   )
 }
 

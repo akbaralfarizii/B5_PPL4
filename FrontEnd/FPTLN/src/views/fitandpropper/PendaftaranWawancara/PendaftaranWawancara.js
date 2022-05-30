@@ -48,7 +48,7 @@ import CIcon from '@coreui/icons-react'
                 <div className="col-sm-5">
                   <CFormInput type="input" id="NIP" placeholder='Masukkan NIP Peserta'/>
                 </div>
-                <CButton type="button" color="info" variant="outline" id="button-addon2">Cek</CButton>
+                <CButton className='btn btn-md btn-info text-white' type="button" id="button-addon2">Cek</CButton>
             </CInputGroup>
           </CRow>
           <CRow className="mb-3">
