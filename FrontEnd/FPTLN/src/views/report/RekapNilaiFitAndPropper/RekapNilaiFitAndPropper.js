@@ -1,67 +1,104 @@
-import CIcon from '@coreui/icons-react'
-import { CButton, CCard, CCardBody, CCardHeader, CCol, CForm, CFormInput, CFormLabel, CFormSelect, CInputGroup, CRow, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react'
 import React from 'react'
-import { cilCalendar, cilCalendarCheck, cilSpreadsheet } from '@coreui/icons'
+import {
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCol,
+  CRow,
+  CTable,
+  CTableBody,
+  CTableCaption,
+  CTableDataCell,
+  CTableHead,
+  CTableHeaderCell,
+  CTableRow,
+  CButton,
+  CFormInput,
+  CInputGroup,
+  CFormLabel,
+} from '@coreui/react'
+import CIcon from '@coreui/icons-react'
+import { cilPen, cilPeople, cilUserFollow } from '@coreui/icons'
+import * as api from '../api';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 
-const RekapNilaiFitAndPropper = () => {
+function RekapNilaiFitAndPropper () {
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.NilaiFitAndPropper();
+      const arr = result.data.data;
+      setTodos(arr);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
-      <CInputGroup>
-        <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Tanggal</b></CFormLabel>
-        <div className='col-sm-7'>
-          <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
-        </div>
-          <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
-      </CInputGroup>
-      <CRow className='mt-5'>
-        <CCol>
-          <CCard>
-            <CCardHeader className='bg-dark text-white'>
-              <CIcon icon={cilSpreadsheet}/>
-              <strong> Report Nilai Peserta Fit & Propper</strong>
+    <CRow>
+      <CCol md={12}>
+      <CCard>
+            <CCardHeader className='bg-info text-white'><b>Data User</b>
             </CCardHeader>
             <CCardBody>
-              <CTable striped bordered>
-                <CTableHead>
-                  <CTableRow>
-                    <CTableHeaderCell scope='col'><center><b>No</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Nama</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Jabatan</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Proyeksi</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Jenjang</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Tanggal</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Penguji</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Nilai</b></center></CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
-                <CTableBody>
-                  <CTableRow>
-                    <CTableDataCell><center>1</center></CTableDataCell>
-                    <CTableDataCell>Hanhan</CTableDataCell>
-                    <CTableDataCell><center>201511041</center></CTableDataCell>
-                    <CTableDataCell>Manager</CTableDataCell>
-                    <CTableDataCell>Manager Atas</CTableDataCell>
-                    <CTableDataCell>Jenjang Teuing</CTableDataCell>
-                    <CTableDataCell><center>09-09-2022</center></CTableDataCell>
-                    <CTableDataCell>Zulaikha</CTableDataCell>
-                    <CTableDataCell>
-                      <center>
-                        <CButton className='btn btn-md btn-info text-white'>
-                          <CIcon icon={cilSpreadsheet}></CIcon>
-                          <strong> Lihat Nilai</strong>
-                        </CButton>
-                      </center>
-                    </CTableDataCell>
-                  </CTableRow>
-                </CTableBody>
-              </CTable>
+              <CInputGroup>
+                <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Bulan Tahun</b></CFormLabel>
+                  <div className='col-sm-4'>
+                    <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
+                  </div>
+                  <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
+              </CInputGroup>
             </CCardBody>
           </CCard>
-        </CCol>
-      </CRow>
+        <CCard className="mb-4">
+          <CCardHeader>
+            <CIcon icon={cilPeople} size="lg" />
+            <strong> Report Nilai Peserta Fit And Proper</strong>
+          </CCardHeader>
+          <CCardBody>
+            <CTable striped hover bordered>
+              <CTableHead color="dark" align="center">
+                <CTableRow>
+                  <CTableHeaderCell scope="col">No</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Nip</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Proyeksi</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Tgl Fit and Proper</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Penguji</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Nilai</CTableHeaderCell>
+                </CTableRow>
+              </CTableHead>
+              {todos.map((todo, index) => (  
+                <CTableBody>
+                  <CTableRow>
+                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Proyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Jenjang_Jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                    <CTableDataCell>Penguji</CTableDataCell>
+                    <CTableDataCell>                  
+                      <Link to={'/report/detailreport'}>
+                        <CButton className='btn btn-md btn-info text-white'>
+                          Lihat Nilai
+                        </CButton>
+                      </Link>
+                  </CTableDataCell>
+                  </CTableRow>
+                </CTableBody>
+              ))}
+            </CTable>
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
     </>
-  )
+  );
 }
 
 export default RekapNilaiFitAndPropper

@@ -28,41 +28,7 @@ import CIcon from '@coreui/icons-react';
 import * as api from '../api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// const uri = `${url}/api/pendaftars`
-// const [pendaftar, setPendaftar] = useState({
-//   data : {
-//     urjab :"",
-//     Jenis_FitnProper : "",
-//     date : "",
-//     proyeksi_jabatan : "",
-//     jenjang_jabatan : "",
-//     file_cv: "",
-//     file_ppt: "",
-//     pesertas: "",
-// }
-// })
-// function submit(e) {
-//   const idx = peserta.findIndex(object => {
-//     return nip === document.getElementById("nip").value})
-//   e.preventDefault();
-//   axios.post(uri,{
-//     data : {
-//       urjab :document.getElementById("urjab").value,
-//       Jenis_FitnProper : document.getElementById("fp").value,
-//       date : document.getElementById("date").value,
-//       proyeksi_jabatan : document.getElementById("proyeksi").value,
-//       jenjang_jabatan : document.getElementById("jenjab").value,
-//       file_cv: "",
-//       file_ppt: "",
-//       pesertas: peserta[idx].id,
-//   }
-//   })
-//   .then(res=>{
-//     console.log(res.data)
-//   })
-//   document.location.reload(true)
-// }
+import axios from 'axios';
 
   const PendaftaranFitAndPropper = () => {
     const [NIP, setNIP] = useState(" ");
@@ -106,10 +72,41 @@ import { useNavigate } from 'react-router-dom';
       console.log(todosPeserta[idPeserta].attributes.pegawai.data.attributes.nama)
       console.log(todosPeserta[idPeserta].attributes.pegawai.data.attributes.NIP)
     }
+
+    const uri = `http://10.10.67.182:1337/api/pendaftars`
+    const [pendaftar, setPendaftar] = useState({
+      data :{
+        NIP : "",
+        Nama : "",
+        Grade : "",
+        Date : "",
+        Jenjang_Jabatan : "",
+        Jenis_FitPropper : "",
+        Uraian_Jabatan : "",
+        Jabatan : "",
+      }
+    })
+
+    function submit(e){
+      axios.post(uri,{
+        data : {
+          NIP : document.getElementById("NIP").value,
+          Nama : document.getElementById("Nama").value,
+          Grade : document.getElementById("Grade").value,
+          Date: document.getElementById("Date"),
+          Jenjang_Jabatan : document.getElementById("Jenjang_Jabatan"),
+          Jenis_FitPropper : document.getElementById("Jenis_FitPropper"),
+          Uraian_Jabatan : document.getElementById("Uraian_Jabatan"),
+          Jabatan : document.getElementById("Jabatan"),
+        }
+        .then(res=>{
+          console.log(res.data)
+        })
+      })
+    }
     return (
       <>
-        <CButton className='text-white mb-3 btn-info'>
-          <CIcon icon={cilSpeedometer}></CIcon>
+        <CButton className='text-white mb-3 btn-dark'>
           <strong> Kembali</strong>
         </CButton>
         <CCard>
@@ -171,10 +168,10 @@ import { useNavigate } from 'react-router-dom';
               <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Proyeksi</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormSelect id="Proyeksi" aria-label="Default select example">
+                  <CFormSelect id="Proyeksi_Jabatan" aria-label="Default select example">
                     <option disabled selected>--Pilih Proyeksi Jabatan--</option>
                     {todosJabatan.map((todo) => ( 
-                      <option value="jenjang">{todo.attributes.nama_jabatan}</option>
+                      <option value="Proyeksi_Jabatan">{todo.attributes.nama_jabatan}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -184,10 +181,10 @@ import { useNavigate } from 'react-router-dom';
             <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Jenjang Jabatan</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormSelect id="JenjangJabatan" aria-label="Default select example">
+                  <CFormSelect id="Jenjang_Jabatan" aria-label="Default select example">
                     <option disabled selected>--Pilih Jenjang Jabatan--</option>
                     {todosJabatan.map((todo) => ( 
-                      <option value="jenjang">{todo.attributes.nama_jabatan}</option>
+                      <option value="Jenjang_Jabatan">{todo.attributes.nama_jabatan}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -197,7 +194,7 @@ import { useNavigate } from 'react-router-dom';
             <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Jenis Fit and Propper</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormSelect id="JenisFitPropper" aria-label="Default select example">
+                  <CFormSelect id="Jenis_FitPropper" aria-label="Default select example">
                     <option disabled selected>--Pilih Jenis Fit & Propper--</option>
                     <option value="regular">Regular</option>
                     <option value="vicon">Vicon</option>
@@ -300,7 +297,7 @@ import { useNavigate } from 'react-router-dom';
             </CInputGroup>
           </CRow>
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-            <CButton className='mt-3 text-white btn-info' type="submit">Submit Form</CButton>
+            <CButton className='mt-3 text-white btn-info' type="submit" onClick={(e) => submit(e)}>Submit Form</CButton>
           </div>
         </CCardBody>
         </CCard>

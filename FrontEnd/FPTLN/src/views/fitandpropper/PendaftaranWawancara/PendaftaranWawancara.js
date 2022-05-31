@@ -29,8 +29,7 @@ import CIcon from '@coreui/icons-react'
   const PendaftaranWawancara = () => {
     return (
       <>
-        <CButton className='text-white mb-3 btn-info'>
-          <CIcon icon={cilSpeedometer}></CIcon>
+        <CButton className='text-white mb-3 btn-dark'>
           <strong> Kembali</strong>
         </CButton>
         <CCard>

@@ -29,7 +29,7 @@ const InputDataPeserta  = () => {
     }
     return(
         <>
-        <CButton className='bg-info text-white' onClick={() => {navigate ('/master/datapeserta')}}>Kembali</CButton>
+        <CButton className='btn btn-md bg-info text-white' onClick={() => {navigate ('/master/datapeserta')}}>Kembali</CButton>
             <CCard>
                 <CCardHeader className="bg-dark text-white">
                     <CIcon icon={cilUserPlus}/>
@@ -46,13 +46,13 @@ const InputDataPeserta  = () => {
                     <CInputGroup className="mt-3">
                         <div className="col-sm-1 "></div>
                         <div className="col-sm-1">
-                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
+                            <CFormInput className="btn btn-md bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
                         </div>
                         <div className="col-sm-1">
-                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
+                            <CFormInput className="btn btn-md bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
                         </div>
                         <div className="col-sm-1">
-                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
+                            <CFormInput className="btn btn-sm bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
                         </div>
                     </CInputGroup>
 

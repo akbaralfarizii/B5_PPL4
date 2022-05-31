@@ -1,9 +1,20 @@
 import CIcon from '@coreui/icons-react'
 import { CButton, CCard, CCardBody, CCardHeader, CCol, CForm, CFormInput, CFormLabel, CFormSelect, CInputGroup, CRow, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { cilCalendar, cilCalendarCheck } from '@coreui/icons'
+import * as api from './api'
 
 const Dashboard = () => {
+  const [peserta, setPeserta] = useState([]);
+  const [cari, setCari] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.Peserta();
+      const arr = result.data.data;
+      setPeserta(arr);
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <h3>Welcome to Fit & Propper Dashboard</h3>
@@ -17,7 +28,10 @@ const Dashboard = () => {
               <CInputGroup>
                 <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Bulan Tahun</b></CFormLabel>
                   <div className='col-sm-4'>
-                    <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
+                    <CFormInput id='tanggal' type='date' placeholder='Pilih Bulan Tahun' onChange={(event)=>{
+                      setCari(event.target.value);
+                    }}
+                    />
                   </div>
                   <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
               </CInputGroup>
@@ -42,15 +56,27 @@ const Dashboard = () => {
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
+                {peserta.filter((todo)=>{
+                  if(cari == ""){
+                    return todo
+                  }else if(todo.attributes.TanggalUji.toLowerCase().includes(cari.toLowerCase())) {
+                    return todo
+                  }
+                }).map((todo, index) => (  
                   <CTableRow>
-                    <CTableDataCell><center>1</center></CTableDataCell>
-                    <CTableDataCell>Hanhan</CTableDataCell>
-                    <CTableDataCell><center>201511041</center></CTableDataCell>
-                    <CTableDataCell>Manager</CTableDataCell>
-                    <CTableDataCell>Manager Atas</CTableDataCell>
-                    <CTableDataCell><center>09-09-2022</center></CTableDataCell>
-                    <CTableDataCell>Zulaikha</CTableDataCell>
+                    <CTableDataCell>{index+1}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.JabatanProyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.TanggalUji}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.HasilNilai}</CTableDataCell>
+                    <CTableDataCell>
+                      <center>
+                        <CButton className='text-white btn-info'>Lihat Nilai</CButton>
+                      </center>
+                    </CTableDataCell>
                   </CTableRow>
+              ))}
                 </CTableBody>
               </CTable>
             </CCardBody>

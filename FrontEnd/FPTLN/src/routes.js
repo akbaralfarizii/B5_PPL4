@@ -28,6 +28,8 @@ const PencarianFitAndPropper = React.lazy(() => import('./views/searchfitandprop
 
 //Administrasi Users
 const AdministrasiUsers = React.lazy(() => import('./views/administrasiusers/AdministrasiUsers'))
+const tambahUser = React.lazy(() => import('./views/administrasiusers/tambahUser'))
+const editAkses = React.lazy(() => import('./views/administrasiusers/editAkses'))
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -55,6 +57,8 @@ const routes = [
   { path: '/pencarianfit&propper', name: 'Pencarian Fit & Propper', element: PencarianFitAndPropper },
 
   { path: '/administrasiusers', name: 'Administrasi Users', element: AdministrasiUsers },
+  { path: '/administrasiusers/tambahUser', name: 'Edit Akses', element: tambahUser},
+  { path: '/administrasiusers/editAkses', name: 'Edit Akses', element: editAkses},
 
 ]
 

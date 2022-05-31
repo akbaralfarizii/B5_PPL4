@@ -23,20 +23,20 @@ import { useNavigate } from 'react-router-dom';
 
 function DataPeserta () {
   const [todos, setTodos] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await api.Peserta();
-      const arr = result.data.data;
-      setTodos(arr);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await api.Peserta();
+  //     const arr = result.data.data;
+  //     setTodos(arr);
+  //   };
+  //   fetchData();
+  // }, []);
 
   let navigate = useNavigate();
 
   return (
     <>
-    <CButton className='bg-info text-white' onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}>
+    <CButton className='btn btn-md bg-info text-white' onClick={() => {navigate('/master/datapeserta/inputdatapeserta')}}>
       <CIcon icon={cilUserFollow}/>
       <strong>Tambah Data Peserta</strong> 
     </CButton>
@@ -45,7 +45,7 @@ function DataPeserta () {
         <CCard className="mb-4">
           <CCardHeader className='bg-dark text-white'>
             <CIcon icon={cilPeople} size="lg" />
-            <strong> Data Peserta</strong>
+            {/* <strong> Data Peserta {todo.attributes.pegawais.data.attributes.nama}</strong> */}
           </CCardHeader>
           <CCardBody>
             <CTable striped hover bordered>
@@ -60,7 +60,7 @@ function DataPeserta () {
                   <CTableHeaderCell scope="col"><center><b>Edit</b></center></CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
-              {todos.map((todo, index) => (  
+              {/* {todos.map((todo, index) => (  
                 <CTableBody>
                   <CTableRow>
                     <CTableDataCell><center>{index+1}</center></CTableDataCell>
@@ -71,10 +71,10 @@ function DataPeserta () {
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                     <CTableDataCell>
                       <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
-                    </CTableDataCell>
+                    </CTableDataCell>s
                   </CTableRow>
                 </CTableBody>
-              ))}
+              ))} */}
             </CTable>
           </CCardBody>
         </CCard>

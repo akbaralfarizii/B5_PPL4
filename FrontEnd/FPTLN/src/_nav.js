@@ -54,7 +54,7 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Penilaian Fit & Propper',
-        to: '/fit&propper/pencarianfit&propper',
+        to: '/fit&propper/penilaianfit&propper',
       },
       {
         component: CNavItem,
@@ -70,17 +70,17 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'Rekap Nilai Fit & Propper',
+        name: 'Rekap Nilai F&P',
         to: '/report/rekapnilaifit&propper',
       },
       {
         component: CNavItem,
-        name: 'Rekap Manual Nilai Fit & Propper',
+        name: 'Rekap Manual Nilai F&P',
         to: '/report/rekapmanualnilaifit&propper',
       },
       {
         component: CNavItem,
-        name: 'Cetak Nilai Fit & Propper',
+        name: 'Cetak Nilai F&P',
         to: '/report/cetaknilaifit&propper',
       },
       {
