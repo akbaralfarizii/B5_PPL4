@@ -70,17 +70,17 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: 'Rekap Nilai F&P',
+        name: 'Rekap Nilai F & P',
         to: '/report/rekapnilaifit&propper',
       },
       {
         component: CNavItem,
-        name: 'Rekap Manual Nilai F&P',
+        name: 'Rekap Manual Nilai F & P',
         to: '/report/rekapmanualnilaifit&propper',
       },
       {
         component: CNavItem,
-        name: 'Cetak Nilai F&P',
+        name: 'Cetak Nilai F & P',
         to: '/report/cetaknilaifit&propper',
       },
       {

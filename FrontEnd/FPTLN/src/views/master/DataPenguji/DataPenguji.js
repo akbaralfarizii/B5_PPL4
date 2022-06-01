@@ -64,7 +64,7 @@ function DataPenguji() {
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>
-                      <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
+                      <center><CButton className='bg-info text-white'><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
                     </CTableDataCell>
                   </CTableRow>
                 </CTableBody>
