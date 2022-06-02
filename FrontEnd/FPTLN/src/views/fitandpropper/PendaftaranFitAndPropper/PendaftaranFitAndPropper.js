@@ -15,6 +15,7 @@ import {
   CInputGroupText,
   } from '@coreui/react';
 import {
+  cibV8,
   cilNotes,
   cilPaperclip,
   cilSearch,
@@ -31,7 +32,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
   const PendaftaranFitAndPropper = () => {
-    const [NIP, setNIP] = useState(" ");
+    const [NIP, setNIP] = useState("");
     const [todos, setTodos] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -52,28 +53,26 @@ import axios from 'axios';
         fetchData();
 
     }, []);
-    const [todosPeserta, setTodosPeserta] = useState([]);
+    const [peserta, setPeserta] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
         const resultPeserta = await api.Peserta();
         const arrPeserta = resultPeserta.data.data;
-        setTodosPeserta(arrPeserta);
+        setPeserta(arrPeserta);
         };
         fetchData();
 
     }, []);
     function Peserta() { 
-      const idPeserta = todosPeserta.findIndex(object => {
-        return NIP === document.getElementById("NIP").value
-      })
-      document.getElementById("Nama").value = todosPeserta[idPeserta].attributes.pegawai.data.attributes.nama
-      document.getElementById("Jabatan").value = todosPeserta[idPeserta].attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan
-      document.getElementById("Grade").value = todosPeserta[idPeserta].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
-      console.log(todosPeserta[idPeserta].attributes.pegawai.data.attributes.nama)
-      console.log(todosPeserta[idPeserta].attributes.pegawai.data.attributes.NIP)
+      const idx = peserta.findIndex(x => 
+        x.attributes.pegawai.data.attributes.NIP === document.getElementById("NIP").value)
+      console.log(idx)
+      document.getElementById("Nama").value = peserta[idx].attributes.pegawai.data.attributes.nama
+      document.getElementById("Jabatan").value = peserta[idx].attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan
+      document.getElementById("Grade").value = peserta[idx].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
     }
 
-    const uri = `http://10.10.67.182:1337/api/pendaftars`
+    const uri = `http://192.168.100.3:1337/api/pendaftars`
     const [pendaftar, setPendaftar] = useState({
       data :{
         NIP : "",
@@ -87,22 +86,24 @@ import axios from 'axios';
       }
     })
 
-    function submit(e){
+    function submit(e) {
+      const idx = peserta.findIndex(x => 
+        x.attributes.pegawai.data.attributes.NIP === document.getElementById("NIP").value)
+      e.preventDefault();
       axios.post(uri,{
         data : {
-          NIP : document.getElementById("NIP").value,
-          Nama : document.getElementById("Nama").value,
-          Grade : document.getElementById("Grade").value,
-          Date: document.getElementById("Date"),
-          Jenjang_Jabatan : document.getElementById("Jenjang_Jabatan"),
-          Jenis_FitPropper : document.getElementById("Jenis_FitPropper"),
-          Uraian_Jabatan : document.getElementById("Uraian_Jabatan"),
-          Jabatan : document.getElementById("Jabatan"),
-        }
-        .then(res=>{
-          console.log(res.data)
-        })
+          Date : document.getElementById("Date").value,
+          jenis_fitnproper :document.getElementById("Jenis_FitPropper").value,
+          Pilih_uraian_jabatan : document.getElementById("UraianJabatan").value,
+          // CV : document.getElementById("CV").value, 
+          // PPT : document.getElementById("PPT").value,
+          peserta: peserta[idx].id,
+      }
       })
+      .then(res=>{
+        console.log(peserta[idx].id)
+      })
+      // console.log(document.getElementById("ppt").value)
     }
     return (
       <>
@@ -122,10 +123,11 @@ import axios from 'axios';
             <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">NIP</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormInput type="input" id="NIP" placeholder='Masukkan NIP Peserta'
+                  <CFormInput type="text" id="NIP" placeholder='Masukkan NIP Peserta'
                     value={NIP}
                     onChange={(e) => {
                       setNIP(e.target.value);
+                      console.log(NIP)
                     }}
                   />
                 </div>
