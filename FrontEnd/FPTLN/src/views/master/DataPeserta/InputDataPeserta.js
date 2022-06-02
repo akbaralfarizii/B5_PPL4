@@ -1,18 +1,31 @@
-import React from "react";
-import * as BsIcons from 'react-icons/bs';
-import * as AiIcons from 'react-icons/ai';
-import '../style.css';
-import * as api from '../api';
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import axios from "axios";
-import { CButton, CCard, CCardBody, CCardHeader, CFormInput, CFormLabel, CInputGroup, CTable, CTableBody, CTableHead,CTableDataCell, CTableRow, CTableHeaderCell } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
+import React from "react"
+import * as api from '../api'
+import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import axios from "axios"
+import { 
+    CButton, 
+    CCard, 
+    CCardBody, 
+    CCardHeader, 
+    CFormInput, 
+    CFormLabel, 
+    CInputGroup, 
+    CTable, 
+    CTableBody, 
+    CTableHead,
+    CTableDataCell, 
+    CTableRow, 
+    CTableHeaderCell 
+} from "@coreui/react"
+import CIcon from "@coreui/icons-react"
 import { cilUserPlus , cilPlus} from '@coreui/icons'
 
 const InputDataPeserta  = () => {
     let navigate = useNavigate ()
+
     const [pegawai, setPegawai] = useState([]);
+
     const [cari, setCari] = useState([]);
   
     useEffect(() => {
@@ -25,28 +38,21 @@ const InputDataPeserta  = () => {
     }, []);
 
     const uri = `http://192.168.100.3:1337/api/pesertas`
-    // const [peserta, setPeserta] = useState({
-    //     "data" : {
-    //         id_peserta: "",
-    //         pegawai : [],
-    //     }
-    // })
   
-  function submit(nilai) {
-    axios.post(uri,{
-      "data" : {
-        pegawai : [nilai]
+    function submit(nilai) {
+        axios.post(uri,{
+        "data" : {
+            pegawai : [nilai]
+        }
+        })
+        .then(res=>{
+        console.log(res.data)
+        })
     }
-    })
-    .then(res=>{
-      console.log(res.data)
-    })
-  }
     
-
     return(
         <>
-        <CButton className='btn btn-md bg-info text-white' onClick={() => {navigate ('/master/datapeserta')}}>Kembali</CButton>
+        <CButton className='btn btn-sm btn-info text-white mb-2' onClick={() => {navigate ('/master/datapeserta')}}>KEMBALI</CButton>
             <CCard>
                 <CCardHeader className="bg-dark text-white">
                     <CIcon icon={cilUserPlus}/>
@@ -66,16 +72,9 @@ const InputDataPeserta  = () => {
                     <CInputGroup className="mt-3">
                         <div className="col-sm-1 "></div>
                         <div className="col-sm-1">
-                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="CEK"></CFormInput>
-                        </div>
-                        <div className="col-sm-1">
-                            <CFormInput className="bg-info text-white" type="submit" id="NIP" value="MANUAL"></CFormInput>
-                        </div>
-                        <div className="col-sm-1">
-                            <CFormInput className=" bg-info text-white" type="submit" id="NIP" value="BATAL"></CFormInput>
+                            <CFormInput className="btn btn-sm btn-info text-white" type="submit" id="NIP" value="CEK"/>
                         </div>
                     </CInputGroup>
-
                 </CCardBody>
             </CCard>
             <CCard>
@@ -93,36 +92,34 @@ const InputDataPeserta  = () => {
                         </CTableHead>
                         <CTableBody align="center">
                             {pegawai.filter((todo)=>{
-                            if(cari == ""){
-                                return null
-                            }else if(todo.attributes.NIP.toLowerCase().includes(cari.toLowerCase())) {
-                                return todo
-                            }
+                                if(cari == ""){
+                                    return null
+                                }else if(todo.attributes.NIP.toLowerCase().includes(cari.toLowerCase())) {
+                                    return todo
+                                }
                             }).map((todo) => (  
-                            <CTableRow>
-                                <CTableDataCell>{todo.attributes.nama}</CTableDataCell>
-                                <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                                <CTableDataCell>{todo.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                                <CTableDataCell>{todo.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
-                                <CTableDataCell>{todo.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
-                                <CTableDataCell>
-                                    <center>
-                                    <Link to={'/master/datapeserta'}>
-                                        <CButton className="btn btn-md bg-info text-white" onClick={(e)=>submit(todo.id)}>
-                                            <CIcon icon={cilPlus}/>
-                                             Tambahkan
-                                        </CButton>
-                                    </Link>
-                                    </center>
-                                </CTableDataCell>
-                            </CTableRow>
-                        ))}
+                                <CTableRow>
+                                    <CTableDataCell>{todo.attributes.nama}</CTableDataCell>
+                                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
+                                    <CTableDataCell>{todo.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                                    <CTableDataCell>{todo.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
+                                    <CTableDataCell>{todo.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                                    <CTableDataCell>
+                                        <center>
+                                        <Link to={'/master/datapeserta'}>
+                                            <CButton className="btn btn-sm btn-info text-white" onClick={(e)=>submit(todo.id)}>
+                                                <CIcon icon={cilPlus} className="me-1"/>Tambahkan
+                                            </CButton>
+                                        </Link>
+                                        </center>
+                                    </CTableDataCell>
+                                </CTableRow>
+                            ))}
                         </CTableBody>
                     </CTable>
                 </CCardBody>
             </CCard>
         </>
-
     )
 }
 export default InputDataPeserta;

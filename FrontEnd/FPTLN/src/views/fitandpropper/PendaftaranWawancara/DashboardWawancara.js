@@ -17,10 +17,11 @@ import {
   CTableRow 
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
-import { cilCalendar} from '@coreui/icons'
-import * as api from './api'
+import { cilCalendar, cilUserPlus} from '@coreui/icons'
+import * as api from '../api'
+import { Link } from 'react-router-dom'
 
-const Dashboard = () => {
+const DashboardWawancara = () => {
   const [peserta, setPeserta] = useState([]);
 
   const [cari, setCari] = useState([]);
@@ -36,12 +37,16 @@ const Dashboard = () => {
 
   return (
     <>
-      <h3>Welcome to Fit & Propper Dashboard</h3>
       <CRow>
         <CCol>
+            <Link to={'/fit&propper/pendaftaranwawancara'}>
+                <CButton className='btn btn-sm btn-info text-white mb-2'>
+                    <CIcon icon={cilUserPlus} className="me-1"/>Pendaftaran Wawancara
+                </CButton>
+            </Link>
           <CCard>
-            <CCardHeader className='bg-info text-white'>
-              Dashboard / <b>Jadwal</b>
+            <CCardHeader className='bg-dark text-white'>
+              Dashboard / <b>Pendaftaran Wawancara</b>
             </CCardHeader>
             <CCardBody>
               <CInputGroup>
@@ -66,8 +71,8 @@ const Dashboard = () => {
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope='col'><center><b>No</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Nama</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Jabatan</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Proyeksi</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Tanggal</b></center></CTableHeaderCell>
@@ -102,4 +107,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardWawancara
