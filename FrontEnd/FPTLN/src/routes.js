@@ -12,7 +12,9 @@ const InputDataPenguji = React.lazy(() => import('./views/master/DataPenguji/Inp
 
 // Fit and Propper
 const PendaftaranFitAndPropper = React.lazy(() => import('./views/fitandpropper/PendaftaranFitAndPropper/PendaftaranFitAndPropper'))
+const DashboardFitPropper = React.lazy(() => import('./views/fitandpropper/PendaftaranFitAndPropper/DashboardFitPropper'))
 const PendaftaranWawancara = React.lazy(() => import('./views/fitandpropper/PendaftaranWawancara/PendaftaranWawancara'))
+const DashboardWawancara = React.lazy(() => import('./views/fitandpropper/PendaftaranWawancara/DashboardWawancara'))
 const PenilaianFitAndPropper = React.lazy(() => import('./views/fitandpropper/PenilaianFitAndPropper/PenilaianFitAndPropper'))
 const PenilaianWawancara = React.lazy(() => import('./views/fitandpropper/PenilaianWawancara/PenilaianWawancara'))
 
@@ -42,7 +44,9 @@ const routes = [
   { path: '/master/datapenguji/inputdatapenguji', name: 'Input Data Penguji', element: InputDataPenguji },
 
   { path: '/fit&propper', name: 'Fit And Propper', element: PendaftaranFitAndPropper, exact: true },
+  { path: '/fit&propper/dashboardfit&propper', name: 'Dashboard Fit And Propper', element: DashboardFitPropper },
   { path: '/fit&propper/pendaftaranfit&propper', name: 'Pendaftaran Fit And Propper', element: PendaftaranFitAndPropper },
+  { path: '/fit&propper/dashboardwawancara', name: 'Dashboard Wawancara', element: DashboardWawancara },
   { path: '/fit&propper/pendaftaranwawancara', name: 'Pendaftaran Wawancara', element: PendaftaranWawancara },
   { path: '/fit&propper/penilaianfit&propper', name: 'Penilaian Fit And Propper', element: PenilaianFitAndPropper },
   { path: '/fit&propper/penilaianwawancara', name: 'Penilaian Wawancara', element: PenilaianWawancara },

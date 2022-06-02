@@ -1,9 +1,5 @@
 import axios from 'axios';
 
 //--Administrasi User
-const urladminuser = 'http://localhost:1337/api/administrasi-users';
+const urladminuser = 'http://192.168.100.3:1337/api/administrasi-users?populate=%2A';
 export const AdminUser = () => axios.get(urladminuser);
-
-const urladminuserpost = 'http://localhost:1337/api/administrasi-users';
-export const PostAdminUser = () => axios.post(urladminuserpost);
-

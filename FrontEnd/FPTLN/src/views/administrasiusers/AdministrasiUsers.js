@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react'
 import {
   CCard,
   CCardBody,
@@ -11,10 +10,9 @@ import {
   CTableRow,
   CButton
 } from '@coreui/react'
+import React, { useEffect, useState } from 'react'
 import CIcon from '@coreui/icons-react'
-import {
-  cilUser, cilUserPlus
-} from '@coreui/icons'
+import { cilUser, cilUserPlus } from '@coreui/icons'
 import { useNavigate } from 'react-router-dom'
 import * as api from './api'
 
@@ -33,12 +31,12 @@ const AdministrasiUsers = () => {
   return (
     <>
       <CButton className='text-white btn btn-md btn-info mb-2' onClick={() => {edit('/administrasiusers/tambahUser')}}>
-        <CIcon icon={cilUserPlus} size="lg"></CIcon>
+        <CIcon icon={cilUserPlus} size="lg" className='me-1'></CIcon>
         Tambah User
       </CButton>
       <CCard>
         <CCardHeader className='bg-dark text-white'>
-          <CIcon icon={cilUser} size="lg"></CIcon>
+          <CIcon icon={cilUser} size="lg" className='me-1'></CIcon>
           <strong> Administrasi User</strong>
         </CCardHeader>
         <CCardBody>

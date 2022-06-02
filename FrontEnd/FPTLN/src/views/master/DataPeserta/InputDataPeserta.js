@@ -107,9 +107,8 @@ const InputDataPeserta  = () => {
                                     <CTableDataCell>
                                         <center>
                                         <Link to={'/master/datapeserta'}>
-                                            <CButton className="btn btn-md bg-info text-white" onClick={(e)=>submit(todo.id)}>
-                                                <CIcon icon={cilPlus}/>
-                                                Tambahkan
+                                            <CButton className="btn btn-sm btn-info text-white" onClick={(e)=>submit(todo.id)}>
+                                                <CIcon icon={cilPlus} className="me-1"/>Tambahkan
                                             </CButton>
                                         </Link>
                                         </center>

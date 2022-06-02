@@ -21,6 +21,10 @@ export const jabatan = () => axios.get(urljabatan);
 const urlproyeksi = 'http://192.168.100.3:1337/api/jabatans';
 export const proyeksi = () => axios.get(urlproyeksi);
 
+//--Data Pendaftar
+const urlpendaftar = 'http://192.168.100.3:1337/api/pendaftars?populate[0]=peserta.pegawai.jenjang&populate[1]=peserta.pegawai.jabatan&populate[2]=peserta.pegawai.grade&populate[3]=proyeksi';
+export const Pendaftar = () => axios.get(urlpendaftar);
+
 //--Jadwal Fit and Proper
 // const urlpenguji = 'http://localhost:1337/api/pendaftars?populate[0]=Peserta.pegawai.jabatan&populate[1]=fitnproper.Jenjang_jabatan_tujuan.jenjang&populate[2]=fitnproper.fit_n_proper.proyeksi';
 // export const Penguji = () => axios.get(urlpenguji);

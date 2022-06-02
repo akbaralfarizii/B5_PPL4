@@ -44,12 +44,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'Pendaftaran Fit & Propper',
-        to: '/fit&propper/pendaftaranfit&propper',
+        to: '/fit&propper/dashboardfit&propper',
       },
       {
         component: CNavItem,
         name: 'Pendaftaran Wawancara',
-        to: '/fit&propper/pendaftaranwawancara',
+        to: '/fit&propper/dashboardwawancara',
       },
       {
         component: CNavItem,
