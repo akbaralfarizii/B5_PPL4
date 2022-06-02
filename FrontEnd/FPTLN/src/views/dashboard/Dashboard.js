@@ -47,8 +47,8 @@ const Dashboard = () => {
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope='col'><center><b>No</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Nama</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Nama</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Jabatan</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Proyeksi</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Tanggal</b></center></CTableHeaderCell>
