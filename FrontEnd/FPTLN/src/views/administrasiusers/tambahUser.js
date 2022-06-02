@@ -1,43 +1,65 @@
-import { CButton, CCard, CCardBody, CCardHeader, CForm, CFormInput, CFormLabel, CFormSelect, CInputGroup, CRow} from "@coreui/react";
+import { 
+    CButton, 
+    CCard, 
+    CCardBody, 
+    CCardHeader,
+    CFormInput, 
+    CFormLabel, 
+    CFormSelect, 
+    CInputGroup, 
+    CRow
+} from "@coreui/react";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as api from './api';
 
 const tambahUser = () => {
     let kembali = useNavigate()
-    const uri = `http://localhost:1337/api/administrasi-users`
-    const [admin, setAdmin] = useState({
+
+    const uri = `http://192.168.100.3:1337/api/administrasi-users?populate=%2A`
+
+    const [NIP, setNIP] = useState("")
+
+    const [pegawai, setPegawai] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+        const resultPeserta = await api.Pegawai();
+        const arrPeserta = resultPeserta.data.data;
+        setPegawai(arrPeserta);
+        };
+        fetchData();
+    }, []);
+
+    function Admin() { 
+      const idx = pegawai.findIndex(x => 
+        x.attributes.NIP === document.getElementById("NIP").value)
+      console.log(idx)
+      document.getElementById("Nama").value = pegawai[idx].attributes.nama
+    }
+
+    function submit(e) {
+        const idx = pegawai.findIndex(x => 
+            x.attributes.NIP === document.getElementById("NIP").value)
+          console.log(idx)
+        axios.post(uri,{
         data : {
-            NIP :"",
-            Nama : "",
-            Password : "",
-            Akses : "",
-            AdministrasiUsers : "",
-            Master: "",
-            DaftarFP: "",
-            NilaiFP: "",
-            Report: "",
+            pegawai : pegawai[idx].id,
+            Password : document.getElementById("Password").value,
+            Akses : document.getElementById("Akses").value,
+            AdministrasiUsers : document.getElementById("AdminUser").value,
+            Master : document.getElementById("Master").value,
+            DaftarFP : document.getElementById("DaftarFP").value,
+            NilaiFP : document.getElementById("NilaiFP").value,
+            Report : document.getElementById("Report").value,
+        }
+        })
+        .then(res=>{
+        console.log(res.data)
+        })
     }
-    })
-  
-  function submit(e) {
-    axios.post(uri,{
-      data : {
-        NIP :document.getElementById("NIP").value,
-        Nama : document.getElementById("Nama").value,
-        Password : document.getElementById("Password").value,
-        Akses : document.getElementById("Akses").value,
-        AdministrasiUsers : document.getElementById("AdminUser").value,
-        Master : document.getElementById("Master").value,
-        DaftarFP : document.getElementById("DaftarFP").value,
-        NilaiFP : document.getElementById("NilaiFP").value,
-        Report : document.getElementById("Report").value,
-    }
-    })
-    .then(res=>{
-      console.log(res.data)
-    })
-  }
+
     return(
         <>
             <CButton className="btn btn-md btn-dark text-white mb-2" onClick={() => {kembali('/administrasiusers')}}>
@@ -50,10 +72,17 @@ const tambahUser = () => {
                 <CCardBody>
                     <CRow className="mb-3">
                         <CInputGroup>
-                        <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">NIP</CFormLabel>
-                            <div className="col-sm-10">
-                            <CFormInput type="input" id="NIP" placeholder='Masukkan NIP' />
+                            <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">NIP</CFormLabel>
+                            <div className="col-sm-5">
+                            <CFormInput type="text" id="NIP" placeholder='Masukkan NIP Peserta'
+                                value={NIP}
+                                onChange={(e) => {
+                                setNIP(e.target.value);
+                                console.log(NIP)
+                                }}
+                            />
                             </div>
+                            <CButton className='btn-info text-white' type="submit" id="cek" onClick={() => Admin()}>Cek</CButton>
                         </CInputGroup>
                     </CRow>
                     <CRow className="mb-3">
@@ -68,7 +97,7 @@ const tambahUser = () => {
                         <CInputGroup>
                         <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Password</CFormLabel>
                             <div className="col-sm-10">
-                            <CFormInput type="password" id="Password" placeholder='Masukkan Password' />
+                            <CFormInput type="text" id="Password" placeholder='Masukkan Password' />
                             </div>
                         </CInputGroup>
                     </CRow>
@@ -147,7 +176,6 @@ const tambahUser = () => {
                     </Link>
                 </CCardBody>
             </CCard>
-    
         </>
     )
 }

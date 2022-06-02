@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react';
 import {
   CCard,
   CCardBody,
@@ -7,82 +7,77 @@ import {
   CRow,
   CTable,
   CTableBody,
-  CButton,
+  CTableCaption,
   CTableDataCell,
   CTableHead,
   CTableHeaderCell,
   CTableRow,
-  CForm,
-  CFormInput,
+  CButton,
 } from '@coreui/react'
-import { Link } from 'react-router-dom'
+import CIcon from '@coreui/icons-react'
+import { cilPen, cilPeople, cilUserFollow } from '@coreui/icons'
+import * as api from '../api';
+import { useEffect, useState } from 'react';
 
 const PenilaianWawancara = () => {
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await api.NilaiWawancara();
+      const arr = result.data.data;
+      setTodos(arr);
+    };
+    fetchData();
+  }, []);
+
   return (
-   <CRow>
-      <CCol xs={12}>
+    <>
+    <CRow>
+      <CCol md={12}>
         <CCard className="mb-4">
-          <CCardHeader>
-            <strong>Data Penguji</strong>
+          <CCardHeader className='bg-dark text-white'>
+            <CIcon icon={cilPeople} size="lg" />
+            <strong> Penilaian Fit And Proper</strong>
           </CCardHeader>
-          <CCardBody className='mt-3'>
-            <CRow>
-              <CCol xs={9}>
-                <CForm>
-                    <CFormInput
-                      type="text"
-                      id="exampleFormControlInput1"
-                      placeholder="Masukkan Kata Kunci Pencarian . . ."
-                    />
-                </CForm>
-              </CCol>
-              <CCol>
-                <Link to={'/tambahpenguji'}>
-                  <CButton
-                    color='primary'
-                    style={{width:'100%'}}
-                    variant="outline" >
-                      Tambah Penguji
-                  </CButton>
-                </Link>
-              </CCol>
-            </CRow>
-              <CTable striped className='mt-3'>
-                <CTableHead>
-                  <CTableRow>
-                    <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Name</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Description</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Place and Date Birth</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Position</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Photo</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">Action</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
+          <CCardBody>
+            <CTable striped hover bordered>
+              <CTableHead color="dark">
+                <CTableRow>
+                  <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>CV</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Proyeksi</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Jenjang</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Tanggal Fit And Proper</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Penguji</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Nilai</b></center></CTableHeaderCell>
+                </CTableRow>
+              </CTableHead>
+              {todos.map((todo, index) => (  
                 <CTableBody>
-                  <CTableRow>
-                    <CTableHeaderCell scope="row">1</CTableHeaderCell>
-                    <CTableDataCell>akbar</CTableDataCell>
-                    <CTableDataCell>test</CTableDataCell>
-                    <CTableDataCell>Bandung, 21 Mei 2001</CTableDataCell>
-                    <CTableDataCell>Test</CTableDataCell>
-                    <CTableDataCell>
-                      <img src="https://cdn.keepo.me/images/post/lists/2019/08/27/main-list-image2nd-b016a720-04e2-4536-bcac-b82f60ee00a3-7.jpeg" width="100" />
-                    </CTableDataCell>
-                    <CTableDataCell>
-                      <CButton color={'warning'} variant="outline">
-                      Edit</CButton>
-                      <CButton color={'danger'} variant="outline">
-                      Delete</CButton>
-                    </CTableDataCell>
-                  </CTableRow>
+                    <CTableRow>
+                      <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
+                      <CTableDataCell>Penguji</CTableDataCell>
+                    </CTableRow>
                 </CTableBody>
-              </CTable>
+              ))}
+            </CTable>
           </CCardBody>
         </CCard>
       </CCol>
     </CRow>
-  )
+    </>
+        
+  );
 }
 
 export default PenilaianWawancara

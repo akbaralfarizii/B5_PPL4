@@ -17,23 +17,23 @@ import {
   CTableRow 
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
-import { cilCalendar, cilUserPlus} from '@coreui/icons'
+import { cilCalendar, cilUserPlus, cilTrash} from '@coreui/icons'
 import * as api from '../api'
 import { Link } from 'react-router-dom'
 
 const DashboardFitPropper = () => {
-  const [peserta, setPeserta] = useState([]);
+    const [nilaiFitAndPropper, setNilaiFitAndPropper] = useState([])
 
-  const [cari, setCari] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await api.Pendaftar();
-      const arr = result.data.data;
-      setPeserta(arr);
-    };
-    fetchData();
-  }, []);
+    const [cari, setCari] = useState([])
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const result = await api.NilaiFitAndPropper()
+        const arr = result.data.data;
+        setNilaiFitAndPropper(arr);
+      };
+      fetchData();
+    }, []);
 
   return (
     <>
@@ -82,7 +82,7 @@ const DashboardFitPropper = () => {
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                {peserta.filter((todo)=>{
+                {nilaiFitAndPropper.filter((todo)=>{
                   if(cari == ""){
                     return todo
                   }else if(todo.attributes.Date.toLowerCase().includes(cari.toLowerCase())) {
@@ -96,7 +96,13 @@ const DashboardFitPropper = () => {
                     <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
-                    <CTableDataCell>penguji</CTableDataCell>
+                    <CTableDataCell>NULL</CTableDataCell>
+                    <CTableDataCell>NULL</CTableDataCell>
+                    <CTableDataCell>
+                        <CButton className='btn btn-sm btn-danger text-white'>
+                            <CIcon icon={cilTrash} className="me-1"/> Hapus
+                        </CButton>
+                    </CTableDataCell>
                   </CTableRow>
                 ))}
                 </CTableBody>

@@ -19,11 +19,11 @@ import { cilPen, cilPeople, cilUserFollow } from '@coreui/icons'
 import * as api from '../api';
 import { useEffect, useState } from 'react';
 
-function PeniaianFitAndPropper () {
+function PenilaianFitAndPropper () {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.Peserta();
+      const result = await api.NilaiFitAndPropper();
       const arr = result.data.data;
       setTodos(arr);
     };
@@ -44,31 +44,31 @@ function PeniaianFitAndPropper () {
               <CTableHead color="dark">
                 <CTableRow>
                   <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>CV</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Proyeksi</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Jenjang</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Tanggal Fit And Proper</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Penguji</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Penilaian</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Nilai</b></center></CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               {todos.map((todo, index) => (  
                 <CTableBody>
-                  <CTableRow>
-                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.grade.data.attributes.nama_grade}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
-                    <CTableDataCell>
-                      <center><CButton color="info"><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
-                    </CTableDataCell>s
-                  </CTableRow>
+                    <CTableRow>
+                      <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                      <CTableDataCell>File</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                      <CTableDataCell>Penguji</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.total_penilaian_fitpropper}</CTableDataCell>
+                    </CTableRow>
                 </CTableBody>
               ))}
             </CTable>
@@ -81,6 +81,6 @@ function PeniaianFitAndPropper () {
   );
 }
 
-export default PeniaianFitAndPropper;
+export default PenilaianFitAndPropper;
 
 
