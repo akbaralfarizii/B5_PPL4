@@ -23,13 +23,14 @@ import * as api from '../api';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 
-function RekapNilaiWawancara () {
-  const [todos, setTodos] = useState([]);
+const RekapNilaiWawancara = () => {
+  const [nilaiWawancara, setNilaiWawancara] = useState([]);
+  const [cari, setCari] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.NilaiWawancara();
       const arr = result.data.data;
-      setTodos(arr);
+      setNilaiWawancara(arr);
     };
     fetchData();
   }, []);
@@ -43,9 +44,12 @@ function RekapNilaiWawancara () {
             </CCardHeader>
             <CCardBody>
               <CInputGroup>
-                <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Bulan Tahun</b></CFormLabel>
+              <CFormLabel className="col-sm-2 col-form-label"><b>Pilih Bulan Tahun</b></CFormLabel>
                   <div className='col-sm-4'>
-                    <CFormInput id='tanggal' type='date' placeholder='Pilih Tanggal Bulan'></CFormInput>
+                    <CFormInput id='tanggal' type='date' placeholder='Pilih Bulan Tahun' onChange={(event)=>{
+                      setCari(event.target.value);
+                    }}
+                    />
                   </div>
                   <CButton className='btn-info text-white ml-5'><b>Go</b></CButton>
               </CInputGroup>
@@ -54,7 +58,7 @@ function RekapNilaiWawancara () {
         <CCard className="mb-4">
           <CCardHeader>
             <CIcon icon={cilPeople} size="lg" />
-            <strong> Report Nilai Peserta Wawancara</strong>
+            <strong> Report Nilai Peserta Fit And Proper</strong>
           </CCardHeader>
           <CCardBody>
             <CTable striped hover bordered>
@@ -66,32 +70,39 @@ function RekapNilaiWawancara () {
                   <CTableHeaderCell scope="col">Jabatan</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Proyeksi</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Jenjang</CTableHeaderCell>
-                  <CTableHeaderCell scope="col">Tgl Wawancara</CTableHeaderCell>
+                  <CTableHeaderCell scope="col">Tgl Fit and Proper</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Penguji</CTableHeaderCell>
                   <CTableHeaderCell scope="col">Nilai</CTableHeaderCell>
                 </CTableRow>
-                </CTableHead>
-              {todos.map((todo, index) => (  
-                <CTableBody align="center">
+              </CTableHead>
+              <CTableBody>
+                {nilaiWawancara.filter((todo)=>{
+                  if(cari == ""){
+                    return todo
+                  }else if(todo.attributes.Tgl_Wawancara.toLowerCase().includes(cari.toLowerCase())) {
+                    return todo
+                  }
+                }).map((todo, index) => ( 
+                
                   <CTableRow>
                     <CTableDataCell><center>{index+1}</center></CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Proyeksi}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Jenjang_Jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
                     <CTableDataCell>Penguji</CTableDataCell>
                     <CTableDataCell>                  
-                    <Link to={'/report/detailreport'}>
-                    <CButton className='btn btn-md btn-info text-white'>
-                       Lihat Nilai
-                    </CButton>
-                  </Link>
+                      <Link to={'/report/detailreport'}>
+                        <CButton className='btn btn-md btn-info text-white'>
+                          Lihat Nilai
+                        </CButton>
+                      </Link>
                   </CTableDataCell>
                   </CTableRow>
+                   ))}
                 </CTableBody>
-              ))}
             </CTable>
           </CCardBody>
         </CCard>

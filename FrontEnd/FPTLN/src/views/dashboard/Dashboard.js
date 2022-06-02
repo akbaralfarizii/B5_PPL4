@@ -64,6 +64,7 @@ const Dashboard = () => {
                   //   return todo
                   // }
                 }).map((todo, index) => (  
+<<<<<<< HEAD
                   // <CTableRow>
                   //   <CTableDataCell>{index+1}</CTableDataCell>
                   //   <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
@@ -72,6 +73,16 @@ const Dashboard = () => {
                   //   <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                   //   <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
                   //   <CTableDataCell>penguji</CTableDataCell>
+=======
+                  <CTableRow>
+                    <CTableDataCell>{index+1}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                    <CTableDataCell>penguji</CTableDataCell>
+>>>>>>> a55dace552448a432785b0b14304e2941859e4e2
                     {/* <CTableDataCell>
                       <center>
                         <CButton className='text-white btn-info'>Lihat Nilai</CButton>
