@@ -95,7 +95,7 @@ const DashboardWawancara = () => {
                     <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
                     <CTableDataCell>NULL</CTableDataCell>
                     <CTableDataCell>NULL</CTableDataCell>
                     <CTableDataCell>

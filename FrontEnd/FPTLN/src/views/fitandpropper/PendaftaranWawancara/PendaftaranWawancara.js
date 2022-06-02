@@ -118,9 +118,8 @@ import axios from 'axios';
       e.preventDefault();
       axios.post(uri,{
         data : {
-          Tgl_Wawancara : document.getElementById("Date").value,
+          Tgl_Wawancara : document.getElementById("Tgl_Wawancara").value,
           proyeksi :document.getElementById("Proyeksi_Jabatan").value,
-          // jenis_fitnproper :document.getElementById("Jenjang_Jabatan").value,
           jenis_wawancara :document.getElementById("jenis_wawancara").value,
           uraian_jabatan : document.getElementById("UraianJabatan").value,
           // PPT : document.getElementById("PPT").value,
@@ -202,7 +201,7 @@ import axios from 'axios';
             <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Date</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormInput type="date" id="Date" placeholder='Masukkan Tanggal'/>
+                  <CFormInput type="date" id="Tgl_Wawancara" placeholder='Masukkan Tanggal'/>
                 </div>
             </CInputGroup>
           </CRow>

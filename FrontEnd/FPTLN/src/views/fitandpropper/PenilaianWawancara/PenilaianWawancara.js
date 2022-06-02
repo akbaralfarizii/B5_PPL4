@@ -51,7 +51,7 @@ const PenilaianWawancara = () => {
                   <CTableHeaderCell scope="col"><center><b>CV</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Proyeksi</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Jenjang</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Tanggal Fit And Proper</b></center></CTableHeaderCell>
+                  <CTableHeaderCell scope="col"><center><b>Tanggal Wawancara</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Penguji</b></center></CTableHeaderCell>
                   <CTableHeaderCell scope="col"><center><b>Nilai</b></center></CTableHeaderCell>
                 </CTableRow>
@@ -64,9 +64,11 @@ const PenilaianWawancara = () => {
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                      <CTableDataCell>File</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
                       <CTableDataCell>Penguji</CTableDataCell>
+                      <CTableDataCell>NULL</CTableDataCell>
                     </CTableRow>
                 </CTableBody>
               ))}
