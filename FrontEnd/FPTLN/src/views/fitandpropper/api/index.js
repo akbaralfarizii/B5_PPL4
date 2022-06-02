@@ -18,7 +18,7 @@ export const Penguji = () => axios.get(urlpenguji);
 const urljabatan = 'http://192.168.100.3:1337/api/jabatans';
 export const jabatan = () => axios.get(urljabatan);
 
-const urlproyeksi = 'http://192.168.100.3:1337/api/jabatans';
+const urlproyeksi = 'http://192.168.100.3:1337/api/proyeksis';
 export const proyeksi = () => axios.get(urlproyeksi);
 
 //--Jadwal Fit and Proper

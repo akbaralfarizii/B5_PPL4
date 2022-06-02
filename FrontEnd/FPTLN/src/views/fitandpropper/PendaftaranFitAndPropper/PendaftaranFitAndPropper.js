@@ -51,9 +51,24 @@ import axios from 'axios';
         setTodosJabatan(arrJabatan);
         };
         fetchData();
-
     }, []);
+
+    const [todosProyeksi, setTodosProyeksi] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+        const resultProyeksi = await api.proyeksi();
+        const arrProyeksi = resultProyeksi.data.data;
+        setTodosProyeksi(arrProyeksi);
+        };
+        fetchData();
+    }, []);
+
     const [peserta, setPeserta] = useState([]);
+    const [Penguji1, setpenguji1] = useState([]);
+    const [Penguji2, setpenguji2] = useState([]);
+    const [Penguji3, setpenguji3] = useState([]);
+    const [Penguji4, setpenguji4] = useState([]);
+    const [Penguji5, setpenguji5] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
         const resultPeserta = await api.Peserta();
@@ -86,17 +101,39 @@ import axios from 'axios';
       }
     })
 
+
+
     function submit(e) {
+      let [Penguji1, setPenguji1] = useState(null);
+      let [Penguji2, setPenguji2] = useState(null);
+      let [Penguji3, setPenguji3] = useState(null);
+      let [Penguji4, setPenguji4] = useState(null);
+      let [Penguji5, setPenguji5] = useState(null);
+      setPenguji1 = document.getElementById("Penguji1").value;
+      setPenguji2 = document.getElementById("Penguji2").value;
+      setPenguji3 = document.getElementById("Penguji3").value;
+      setPenguji4 = document.getElementById("Penguji4").value;
+      setPenguji5 = document.getElementById("Penguji5").value;
       const idx = peserta.findIndex(x => 
         x.attributes.pegawai.data.attributes.NIP === document.getElementById("NIP").value)
       e.preventDefault();
       axios.post(uri,{
         data : {
           Date : document.getElementById("Date").value,
+          proyeksi :document.getElementById("Proyeksi_Jabatan").value,
+          // jenis_fitnproper :document.getElementById("Jenjang_Jabatan").value,
           jenis_fitnproper :document.getElementById("Jenis_FitPropper").value,
           Pilih_uraian_jabatan : document.getElementById("UraianJabatan").value,
-          // CV : document.getElementById("CV").value, 
           // PPT : document.getElementById("PPT").value,
+          // CV : document.getElementById("CV").value,
+          // Penguji : document.getElementById("Penguji1").value,
+          // Penguji : document.getElementById("Penguji2").value,
+          // Penguji : document.getElementById("Penguji3").value,
+          // Penguji : document.getElementById("Penguji4").value,
+          pengujis : [
+            Penguji1,Penguji2,Penguji3,Penguji4,Penguji5
+          ],
+          // pengujis : document.getElementById("Penguji1").value,
           peserta: peserta[idx].id,
       }
       })
@@ -172,8 +209,8 @@ import axios from 'axios';
                 <div className="col-sm-5">
                   <CFormSelect id="Proyeksi_Jabatan" aria-label="Default select example">
                     <option disabled selected>--Pilih Proyeksi Jabatan--</option>
-                    {todosJabatan.map((todo) => ( 
-                      <option value="Proyeksi_Jabatan">{todo.attributes.nama_jabatan}</option>
+                    {todosProyeksi.map((todo) => ( 
+                      <option value={todo.id}>{todo.attributes.nama_proyeksi}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -208,12 +245,13 @@ import axios from 'axios';
             <CInputGroup>
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Pilih Uraian Jabatan</CFormLabel>
                 <div className="col-sm-6">
-                  <CFormSelect id="UraianJabatan" aria-label="Default select example">
+                    <CFormInput type="input" id="UraianJabatan" placeholder='Masukkan Uraian Jabatan'/>
+                  {/* <CFormSelect id="UraianJabatan" aria-label="Default select example">
                     <option disabled selected>--Pilih Uraian Jabatan--</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
-                  </CFormSelect>
+                  </CFormSelect> */}
                 </div>
             </CInputGroup>
           </CRow>
@@ -240,7 +278,7 @@ import axios from 'axios';
                   <CFormSelect id='Penguji1' aria-label="Default select example">
                     <option disabled selected>--Pilih Penguji 1--</option>
                     {todos.map((todo) => ( 
-                    <option value="penguji1">{todo.attributes.pegawai.data.attributes.nama}</option>
+                    <option value={todo.id}>{todo.attributes.pegawai.data.attributes.nama}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -253,7 +291,7 @@ import axios from 'axios';
                   <CFormSelect id="Penguji2" aria-label="Default select example">
                     <option disabled selected>--Pilih Penguji 2--</option>
                     {todos.map((todo) => ( 
-                    <option value="penguji1">{todo.attributes.pegawai.data.attributes.nama}</option>
+                    <option value={todo.id}>{todo.attributes.pegawai.data.attributes.nama}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -266,7 +304,7 @@ import axios from 'axios';
                   <CFormSelect id='Penguji3' aria-label="Default select example">
                     <option disabled selected>--Pilih Penguji 3--</option>
                     {todos.map((todo) => ( 
-                    <option value="penguji1">{todo.attributes.pegawai.data.attributes.nama}</option>
+                    <option value={todo.id}>{todo.attributes.pegawai.data.attributes.nama}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -279,7 +317,7 @@ import axios from 'axios';
                   <CFormSelect id='Penguji4' aria-label="Default select example">
                     <option disabled selected>--Pilih Penguji 4--</option>
                     {todos.map((todo) => ( 
-                    <option value="penguji1">{todo.attributes.pegawai.data.attributes.nama}</option>
+                    <option value={todo.id}>{todo.attributes.pegawai.data.attributes.nama}</option>
                     ))}
                   </CFormSelect>
                 </div>
@@ -292,7 +330,7 @@ import axios from 'axios';
                   <CFormSelect id='Penguji5' aria-label="Default select example">
                     <option disabled selected>--Pilih Penguji 5--</option>
                     {todos.map((todo) => ( 
-                    <option value="penguji1">{todo.attributes.pegawai.data.attributes.nama}</option>
+                    <option value={todo.id}>{todo.attributes.pegawai.data.attributes.nama}</option>
                     ))}
                   </CFormSelect>
                 </div>
