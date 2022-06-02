@@ -58,26 +58,26 @@ const Dashboard = () => {
                 </CTableHead>
                 <CTableBody>
                 {peserta.filter((todo)=>{
-                  if(cari == ""){
-                    return todo
-                  }else if(todo.attributes.Date.toLowerCase().includes(cari.toLowerCase())) {
-                    return todo
-                  }
+                  // if(cari == ""){
+                  //   return todo
+                  // }else if(todo.attributes.Date.toLowerCase().includes(cari.toLowerCase())) {
+                  //   return todo
+                  // }
                 }).map((todo, index) => (  
-                  <CTableRow>
-                    <CTableDataCell>{index+1}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
-                    <CTableDataCell>penguji</CTableDataCell>
+                  // <CTableRow>
+                  //   <CTableDataCell>{index+1}</CTableDataCell>
+                  //   <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
+                  //   <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
+                  //   <CTableDataCell>{todo.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                  //   <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                  //   <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                  //   <CTableDataCell>penguji</CTableDataCell>
                     {/* <CTableDataCell>
                       <center>
                         <CButton className='text-white btn-info'>Lihat Nilai</CButton>
                       </center>
                     </CTableDataCell> */}
-                  </CTableRow>
+                  // </CTableRow>
               ))}
                 </CTableBody>
               </CTable>
