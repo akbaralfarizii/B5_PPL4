@@ -66,9 +66,9 @@ const Dashboard = () => {
                 }).map((todo, index) => (  
                   <CTableRow>
                     <CTableDataCell>{index+1}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
                     <CTableDataCell>penguji</CTableDataCell>
