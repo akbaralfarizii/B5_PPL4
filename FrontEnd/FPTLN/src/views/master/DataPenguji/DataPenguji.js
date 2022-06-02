@@ -13,9 +13,12 @@ import {
   CTableRow,
   CButton,
 } from '@coreui/react'
+import { 
+  cilPeople,
+  cilUserFollow, 
+  cilTrash 
+} from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
-import { cilPeople, cilPen, cilUserFollow } from '@coreui/icons'
-import '../style.css';
 import * as api from '../api';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -29,53 +32,71 @@ function DataPenguji() {
         setTodos(arr);
         };
         fetchData();
-
     }, []);
+
     let navigate = useNavigate();
+
+    const hapus = (id) => {
+      var yakin = confirm("Anda Yakin untuk Menghapus Penguji ?");
+      if (yakin) {
+        fetch("http://192.168.100.3:1337/api/pengujis/" + id, {
+          method: "DELETE",
+        }).then(() => {
+          console.log('todo deleted.')
+          window.location.reload();
+        });
+      } else {
+        window.location.reload();
+      }
+    };
+
   return (
     <>
-      <CButton className='bg-info text-white' onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}>
-        <CIcon icon={cilUserFollow}/>
+      <CButton className='btn btn-sm btn-info text-white mb-2' onClick={() => {navigate('/master/datapenguji/inputdatapenguji')}}>
+        <CIcon icon={cilUserFollow} className="me-1"/>
         <strong>Tambah Data Penguji</strong>
       </CButton>
-    <CRow>
-      <CCol md={12}>
-        <CCard className="mb-4">
-          <CCardHeader className='bg-dark text-white'>
-            <CIcon icon={cilPeople} size="lg" />
-            <strong> Data Penguji</strong>
-          </CCardHeader>
-          <CCardBody>
-            <CTable striped hover bordered>
-              <CTableHead color="dark">
-                <CTableRow>
-                  <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
-                  <CTableHeaderCell scope="col"><center><b>Edit</b></center></CTableHeaderCell>
-                </CTableRow>
-              </CTableHead>
-              {todos.map((todo, index) => (  
-                <CTableBody>
+      <CRow>
+        <CCol md={12}>
+          <CCard className="mb-4">
+            <CCardHeader className='bg-dark text-white'>
+              <CIcon icon={cilPeople} size="lg" className="me-1"/>
+              <strong> Data Penguji</strong>
+            </CCardHeader>
+            <CCardBody>
+              <CTable striped hover bordered>
+                <CTableHead color="dark">
                   <CTableRow>
-                    <CTableDataCell><center>{index+1}</center></CTableDataCell>
-                    <CTableDataCell><center>{todo.attributes.pegawai.data.attributes.NIP}</center></CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                    <CTableDataCell>
-                      <center><CButton className='bg-info text-white'><CIcon icon={cilPen} className="me-2" ></CIcon><b>Edit</b></CButton></center>
-                    </CTableDataCell>
+                    <CTableHeaderCell scope="col"><center><b>No</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope="col"><center><b>NIP</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope="col"><center><b>Nama</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope="col"><center><b>Jabatan</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope="col"><center><b>Edit</b></center></CTableHeaderCell>
                   </CTableRow>
-                </CTableBody>
-              ))}
-            </CTable>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+                </CTableHead>
+                {todos.map((todo, index) => (  
+                  <CTableBody>
+                    <CTableRow>
+                      <CTableDataCell><center>{index+1}</center></CTableDataCell>
+                      <CTableDataCell><center>{todo.attributes.pegawai.data.attributes.NIP}</center></CTableDataCell>
+                      <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
+                      <CTableDataCell>
+                        <center>
+                          <CButton className='btn btn-sm btn-danger text-white' onClick={(e)=>hapus(todo.id)}>
+                            <CIcon icon={cilTrash} className="me-1"/>Hapus
+                          </CButton>
+                        </center>
+                      </CTableDataCell>
+                    </CTableRow>
+                  </CTableBody>
+                ))}
+              </CTable>
+            </CCardBody>
+          </CCard>
+        </CCol>
+      </CRow>
     </>
-
   );
 }
 
