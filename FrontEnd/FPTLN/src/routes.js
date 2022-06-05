@@ -20,6 +20,7 @@ const PenilaianWawancara = React.lazy(() => import('./views/fitandpropper/Penila
 
 //Report
 const RekapNilaiFitAndPropper = React.lazy(() => import('./views/report/RekapNilaiFitAndPropper/RekapNilaiFitAndPropper'))
+const LihatNilaiFitAndPropper = React.lazy(() => import('./views/report/RekapNilaiFitAndPropper/LihatNilaiFitAndPropper'))
 const RekapManualNilaiFitAndPropper = React.lazy(() => import('./views/report/RekapManualNilaiFitAndPropper/RekapManualNilaiFitAndPropper'))
 const CetakNilaiFitAndPropper = React.lazy(() =>import('./views/report/CetakNilaiFitAndPropper/CetakNilaiFitAndPropper'))
 const RekapNilaiWawancara = React.lazy(() => import('./views/report/RekapNilaiWawancara/RekapNilaiWawancara'))
@@ -53,6 +54,7 @@ const routes = [
 
   { path: '/report', name: 'Report', element: RekapNilaiFitAndPropper, exact: true },
   { path: '/report/rekapnilaifit&propper', name: 'Rekap Nilai Fit & Propper', element: RekapNilaiFitAndPropper },
+  { path: '/report/rekapnilaifit&propper/lihatnilaifit&propper', name: 'Lihat Nilai Fit & Propper', element: LihatNilaiFitAndPropper },
   { path: '/report/rekapmanualnilaifit&propper', name: 'Rekap Manual Nilai Fit & Propper', element: RekapManualNilaiFitAndPropper },
   { path: '/report/cetaknilaifit&propper', name: 'Cetak Nilai Fit & Propper', element: CetakNilaiFitAndPropper },
   { path: '/report/rekapnilaiwawancara', name: 'Rekap Nilai Wawancara', element: RekapNilaiWawancara },

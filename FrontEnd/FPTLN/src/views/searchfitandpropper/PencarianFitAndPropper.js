@@ -16,12 +16,12 @@ import {
   CCardHeader,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { cilPeople, cilZoom } from '@coreui/icons'
-import { DocsCallout, DocsExample } from 'src/components'
+import { cilZoom } from '@coreui/icons'
 import * as api from './api'
 
 const PencarianFitAndPropper = () => {
   const [peserta, setPeserta] = useState([]);
+
   const [cari, setCari] = useState([]);
 
   useEffect(() => {
@@ -73,26 +73,26 @@ const PencarianFitAndPropper = () => {
                 {peserta.filter((todo)=>{
                   if(cari == ""){
                     return todo
-                  }else if(todo.attributes.NIP.toLowerCase().includes(cari.toLowerCase())) {
+                  }else if(todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP.toLowerCase().includes(cari.toLowerCase())) {
                     return todo
-                  }else if(todo.attributes.Nama.toLowerCase().includes(cari.toLowerCase())) {
+                  }else if(todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama.toLowerCase().includes(cari.toLowerCase())) {
                     return todo
                   }
                 }).map((todo, index) => (  
                   <CTableRow>
                     <CTableDataCell>{index+1}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.JabatanProyeksi}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.TanggalUji}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.HasilNilai}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.total_penilaian_fitpropper}</CTableDataCell>
                     <CTableDataCell>
                       <center>
                         <CButton className='text-white btn-info'>Lihat Nilai</CButton>
                       </center>
                     </CTableDataCell>
                   </CTableRow>
-              ))}
+                ))}
             </CTableBody>
           </CTable>
         </CCardBody>

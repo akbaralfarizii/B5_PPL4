@@ -17,20 +17,20 @@ import {
   CTableRow 
 } from '@coreui/react'
 import React, { useEffect, useState } from 'react'
-import { cilCalendar, cilUserPlus} from '@coreui/icons'
+import { cilCalendar, cilUserPlus, cilTrash} from '@coreui/icons'
 import * as api from '../api'
 import { Link } from 'react-router-dom'
 
 const DashboardWawancara = () => {
-  const [peserta, setPeserta] = useState([]);
+  const [nilaiWawancara, setNilaiWawancara] = useState([])
 
-  const [cari, setCari] = useState([]);
+  const [cari, setCari] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await api.Pendaftar();
+      const result = await api.NilaiWawancara();
       const arr = result.data.data;
-      setPeserta(arr);
+      setNilaiWawancara(arr);
     };
     fetchData();
   }, []);
@@ -67,7 +67,7 @@ const DashboardWawancara = () => {
               <strong> Jadwal Fit & Propper</strong>
             </CCardHeader>
             <CCardBody>
-              <CTable striped bordered>
+            <CTable striped bordered>
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope='col'><center><b>No</b></center></CTableHeaderCell>
@@ -75,15 +75,17 @@ const DashboardWawancara = () => {
                     <CTableHeaderCell scope='col'><center><b>NIP</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Jabatan</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Proyeksi</b></center></CTableHeaderCell>
-                    <CTableHeaderCell scope='col'><center><b>Tanggal</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Tanggal Fit Propper</b></center></CTableHeaderCell>
                     <CTableHeaderCell scope='col'><center><b>Penguji</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Lampiran File</b></center></CTableHeaderCell>
+                    <CTableHeaderCell scope='col'><center><b>Aksi</b></center></CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                {peserta.filter((todo)=>{
+                {nilaiWawancara.filter((todo)=>{
                   if(cari == ""){
                     return todo
-                  }else if(todo.attributes.Date.toLowerCase().includes(cari.toLowerCase())) {
+                  }else if(todo.attributes.Tgl_Wawancara.toLowerCase().includes(cari.toLowerCase())) {
                     return todo
                   }
                 }).map((todo, index) => (  
@@ -93,8 +95,14 @@ const DashboardWawancara = () => {
                     <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
-                    <CTableDataCell>penguji</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
+                    <CTableDataCell>NULL</CTableDataCell>
+                    <CTableDataCell>NULL</CTableDataCell>
+                    <CTableDataCell>
+                        <CButton className='btn btn-sm btn-danger text-white'>
+                            <CIcon icon={cilTrash} className="me-1"/> Hapus
+                        </CButton>
+                    </CTableDataCell>
                   </CTableRow>
                 ))}
                 </CTableBody>

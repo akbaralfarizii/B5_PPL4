@@ -86,7 +86,7 @@ import axios from 'axios';
       document.getElementById("Grade").value = peserta[idx].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
     }
 
-    const uri = `http://192.168.100.3:1337/api/wawancaras`
+    const uri = `http://localhost:1337/api/wawancaras`
     const [pendaftar, setPendaftar] = useState({
       data :{
         NIP : "",
@@ -120,7 +120,6 @@ import axios from 'axios';
         data : {
           Tgl_Wawancara : document.getElementById("Tgl_Wawacnara").value,
           proyeksi :document.getElementById("Proyeksi_Jabatan").value,
-          // jenis_fitnproper :document.getElementById("Jenjang_Jabatan").value,
           jenis_wawancara :document.getElementById("jenis_wawancara").value,
           uraian_jabatan : document.getElementById("UraianJabatan").value,
           // PPT : document.getElementById("PPT").value,

@@ -28,7 +28,7 @@ import { DocsCallout, DocsExample } from 'src/components';
 import CIcon from '@coreui/icons-react';
 import * as api from '../api';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
   const PendaftaranFitAndPropper = () => {
@@ -87,7 +87,7 @@ import axios from 'axios';
       document.getElementById("Grade").value = peserta[idx].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
     }
 
-    const uri = `http://192.168.100.3:1337/api/pendaftars`
+    const uri = `http://localhost:1337/api/pendaftars`
     const [pendaftar, setPendaftar] = useState({
       data :{
         NIP : "",
@@ -104,16 +104,6 @@ import axios from 'axios';
 
 
     function submit(e) {
-      let [Penguji1, setPenguji1] = useState(null);
-      let [Penguji2, setPenguji2] = useState(null);
-      let [Penguji3, setPenguji3] = useState(null);
-      let [Penguji4, setPenguji4] = useState(null);
-      let [Penguji5, setPenguji5] = useState(null);
-      setPenguji1 = document.getElementById("Penguji1").value;
-      setPenguji2 = document.getElementById("Penguji2").value;
-      setPenguji3 = document.getElementById("Penguji3").value;
-      setPenguji4 = document.getElementById("Penguji4").value;
-      setPenguji5 = document.getElementById("Penguji5").value;
       const idx = peserta.findIndex(x => 
         x.attributes.pegawai.data.attributes.NIP === document.getElementById("NIP").value)
       e.preventDefault();
@@ -121,32 +111,32 @@ import axios from 'axios';
         data : {
           Date : document.getElementById("Date").value,
           proyeksi :document.getElementById("Proyeksi_Jabatan").value,
-          // jenis_fitnproper :document.getElementById("Jenjang_Jabatan").value,
           jenis_fitnproper :document.getElementById("Jenis_FitPropper").value,
           Pilih_uraian_jabatan : document.getElementById("UraianJabatan").value,
           // PPT : document.getElementById("PPT").value,
           // CV : document.getElementById("CV").value,
-          // Penguji : document.getElementById("Penguji1").value,
-          // Penguji : document.getElementById("Penguji2").value,
-          // Penguji : document.getElementById("Penguji3").value,
-          // Penguji : document.getElementById("Penguji4").value,
           pengujis : [
-            Penguji1,Penguji2,Penguji3,Penguji4,Penguji5
+            document.getElementById("Penguji1").value,
+            document.getElementById("Penguji2").value,
+            document.getElementById("Penguji3").value,
+            document.getElementById("Penguji4").value,
+            document.getElementById("Penguji5").value,
           ],
-          // pengujis : document.getElementById("Penguji1").value,
           peserta: peserta[idx].id,
       }
       })
       .then(res=>{
         console.log(peserta[idx].id)
       })
-      // console.log(document.getElementById("ppt").value)
     }
+
     return (
       <>
-        <CButton className='text-white mb-3 btn-dark'>
-          <strong> Kembali</strong>
-        </CButton>
+        <Link to={'/fit&propper/dashboardfit&propper'}>
+          <CButton className='text-white mb-3 btn-dark btn btn-sm'>
+            <strong> Kembali</strong>
+          </CButton>
+        </Link>
         <CCard>
           <CCardHeader className='text-white bg-dark'>
             <CIcon icon={cilUserPlus} size="lg" />
@@ -246,12 +236,6 @@ import axios from 'axios';
               <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Pilih Uraian Jabatan</CFormLabel>
                 <div className="col-sm-6">
                     <CFormInput type="input" id="UraianJabatan" placeholder='Masukkan Uraian Jabatan'/>
-                  {/* <CFormSelect id="UraianJabatan" aria-label="Default select example">
-                    <option disabled selected>--Pilih Uraian Jabatan--</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </CFormSelect> */}
                 </div>
             </CInputGroup>
           </CRow>
@@ -337,7 +321,9 @@ import axios from 'axios';
             </CInputGroup>
           </CRow>
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-            <CButton className='mt-3 text-white btn-info' type="submit" onClick={(e) => submit(e)}>Submit Form</CButton>
+            <Link to={'/fit&propper/dashboardfit&propper'}>
+              <CButton className='mt-3 text-white btn-info' type="submit" onClick={(e) => submit(e)}>Submit Form</CButton>
+            </Link>
           </div>
         </CCardBody>
         </CCard>

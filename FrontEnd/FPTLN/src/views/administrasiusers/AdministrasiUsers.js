@@ -18,6 +18,7 @@ import * as api from './api'
 
 const AdministrasiUsers = () => {
   const [todos, setTodos] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.AdminUser();
@@ -28,9 +29,10 @@ const AdministrasiUsers = () => {
   }, []);
 
   let edit = useNavigate()
+
   return (
     <>
-      <CButton className='text-white btn btn-md btn-info mb-2' onClick={() => {edit('/administrasiusers/tambahUser')}}>
+      <CButton className='text-white btn btn-sm btn-info mb-2' onClick={() => {edit('/administrasiusers/tambahUser')}}>
         <CIcon icon={cilUserPlus} size="lg" className='me-1'></CIcon>
         Tambah User
       </CButton>
@@ -61,10 +63,10 @@ const AdministrasiUsers = () => {
                   <CTableRow>
                     <CTableDataCell>{index+1}</CTableDataCell>
                     <CTableDataCell>
-                      <CButton className='text-white btn btn-md btn-info' onClick={() => {edit('/administrasiusers/editAkses')}}>Edit akses</CButton>
+                      <CButton className='text-white btn btn-sm btn-info' onClick={() => {edit('/administrasiusers/editAkses')}}>Edit akses</CButton>
                     </CTableDataCell>
-                    <CTableDataCell>{todo.attributes.NIP}</CTableDataCell>
-                    <CTableDataCell>{todo.attributes.Nama}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
+                    <CTableDataCell>{todo.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Password}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.Akses}</CTableDataCell>
                     <CTableDataCell>{todo.attributes.AdministrasiUsers}</CTableDataCell>
@@ -74,7 +76,6 @@ const AdministrasiUsers = () => {
                     <CTableDataCell>{todo.attributes.Report}</CTableDataCell>
                   </CTableRow>
               ))}
-
             </CTableBody>
           </CTable>
         </CCardBody>

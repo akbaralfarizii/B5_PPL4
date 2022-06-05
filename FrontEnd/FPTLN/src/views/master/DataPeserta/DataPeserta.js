@@ -34,7 +34,7 @@ function DataPeserta () {
   const hapus = (id) => {
     var yakin = confirm("Anda Yakin untuk Menghapus Peserta ?");
     if (yakin) {
-      fetch("http://192.168.100.3:1337/api/pesertas/" + id, {
+      fetch("http://localhost:1337/api/pesertas/" + id, {
         method: "DELETE",
       }).then(() => {
         console.log('todo deleted.')
