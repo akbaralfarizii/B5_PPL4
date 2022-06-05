@@ -92,7 +92,7 @@ import axios from 'axios';
         NIP : "",
         Nama : "",
         Grade : "",
-        Date : "",
+        Tgl_Wawacnara : "",
         Jenjang_Jabatan : "",
         jenis_wawancara : "",
         Uraian_Jabatan : "",
@@ -118,7 +118,7 @@ import axios from 'axios';
       e.preventDefault();
       axios.post(uri,{
         data : {
-          Tgl_Wawancara : document.getElementById("Date").value,
+          Tgl_Wawancara : document.getElementById("Tgl_Wawacnara").value,
           proyeksi :document.getElementById("Proyeksi_Jabatan").value,
           // jenis_fitnproper :document.getElementById("Jenjang_Jabatan").value,
           jenis_wawancara :document.getElementById("jenis_wawancara").value,
@@ -200,9 +200,9 @@ import axios from 'axios';
           </CRow>
           <CRow className="mb-3">
             <CInputGroup>
-              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Date</CFormLabel>
+              <CFormLabel htmlFor="input" className="col-sm-2 col-form-label">Tgl_Wawacnara</CFormLabel>
                 <div className="col-sm-5">
-                  <CFormInput type="date" id="Date" placeholder='Masukkan Tanggal'/>
+                  <CFormInput type="date" id="Tgl_Wawacnara" placeholder='Masukkan Tanggal'/>
                 </div>
             </CInputGroup>
           </CRow>
