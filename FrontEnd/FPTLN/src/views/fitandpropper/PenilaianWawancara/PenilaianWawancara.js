@@ -63,12 +63,12 @@ const PenilaianWawancara = () => {
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.NIP}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.nama}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jabatan.data.attributes.nama_jabatan}</CTableDataCell>
-                      <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                       <CTableDataCell>File</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
-                      <CTableDataCell>Penguji</CTableDataCell>
-                      <CTableDataCell>NULL</CTableDataCell>
+                      <CTableDataCell>5</CTableDataCell>
+                      <CTableDataCell></CTableDataCell>
                     </CTableRow>
                 </CTableBody>
               ))}

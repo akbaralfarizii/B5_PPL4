@@ -39,7 +39,7 @@ function DataPenguji() {
     const hapus = (id) => {
       var yakin = confirm("Anda Yakin untuk Menghapus Penguji ?");
       if (yakin) {
-        fetch("http://192.168.100.3:1337/api/pengujis/" + id, {
+        fetch("http://localhost:1337/api/pengujis/" + id, {
           method: "DELETE",
         }).then(() => {
           console.log('todo deleted.')

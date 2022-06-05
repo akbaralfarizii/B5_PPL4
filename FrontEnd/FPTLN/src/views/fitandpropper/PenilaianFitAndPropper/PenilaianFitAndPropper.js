@@ -66,7 +66,7 @@ function PenilaianFitAndPropper () {
                       <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.Date}</CTableDataCell>
-                      <CTableDataCell>Penguji</CTableDataCell>
+                      <CTableDataCell>5</CTableDataCell>
                       <CTableDataCell>{todo.attributes.total_penilaian_fitpropper}</CTableDataCell>
                     </CTableRow>
                 </CTableBody>

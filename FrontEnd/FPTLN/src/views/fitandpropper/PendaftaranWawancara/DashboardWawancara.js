@@ -20,6 +20,7 @@ import React, { useEffect, useState } from 'react'
 import { cilCalendar, cilUserPlus, cilTrash} from '@coreui/icons'
 import * as api from '../api'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const DashboardWawancara = () => {
   const [nilaiWawancara, setNilaiWawancara] = useState([])
@@ -34,6 +35,20 @@ const DashboardWawancara = () => {
     };
     fetchData();
   }, []);
+
+  const hapus = (id) => {
+    var yakin = confirm("Anda Yakin untuk Menghapus Peserta Fit and Propper ini ?");
+    if (yakin) {
+      fetch("http://localhost:1337/api/wawancaras/" + id, {
+        method: "DELETE",
+      }).then(() => {
+        console.log('todo deleted.')
+        window.location.reload();
+      });
+    } else {
+      window.location.reload();
+    }
+  };
 
   return (
     <>
@@ -99,7 +114,7 @@ const DashboardWawancara = () => {
                     <CTableDataCell>NULL</CTableDataCell>
                     <CTableDataCell>NULL</CTableDataCell>
                     <CTableDataCell>
-                        <CButton className='btn btn-sm btn-danger text-white'>
+                        <CButton className='btn btn-sm btn-danger text-white' onClick={(e)=>hapus(todo.id)}>
                             <CIcon icon={cilTrash} className="me-1"/> Hapus
                         </CButton>
                     </CTableDataCell>

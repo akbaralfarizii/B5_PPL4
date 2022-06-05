@@ -87,7 +87,7 @@ import axios from 'axios';
       document.getElementById("Grade").value = peserta[idx].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
     }
 
-    const uri = `http://192.168.100.3:1337/api/pendaftars`
+    const uri = `http://localhost:1337/api/pendaftars`
     const [pendaftar, setPendaftar] = useState({
       data :{
         NIP : "",

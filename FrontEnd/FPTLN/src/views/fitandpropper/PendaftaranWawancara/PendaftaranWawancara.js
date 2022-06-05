@@ -27,7 +27,7 @@ import { DocsCallout, DocsExample } from 'src/components'
 import CIcon from '@coreui/icons-react'
 import * as api from '../api';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
   const PendaftaranWawancara = () => {
@@ -86,7 +86,7 @@ import axios from 'axios';
       document.getElementById("Grade").value = peserta[idx].attributes.pegawai.data.attributes.grade.data.attributes.nama_grade
     }
 
-    const uri = `http://192.168.100.3:1337/api/wawancaras`
+    const uri = `http://localhost:1337/api/wawancaras`
     const [pendaftar, setPendaftar] = useState({
       data :{
         NIP : "",
@@ -146,9 +146,11 @@ import axios from 'axios';
     }
     return (
       <>
-        <CButton className='text-white mb-3 btn-dark'>
+      <Link to={'/fit&propper/dashboardwawancara'}>
+        <CButton className='text-white mb-3 btn-dark btn btn-sm'>
           <strong> Kembali</strong>
         </CButton>
+        </Link>
         <CCard>
           <CCardHeader className='text-white bg-dark'>
             <CIcon icon={cilUserPlus} size="lg" />
@@ -339,7 +341,9 @@ import axios from 'axios';
             </CInputGroup>
           </CRow>
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+          <Link to={'/fit&propper/dashboardwawancara'}>
             <CButton className='mt-3 text-white btn-info' type="submit" onClick={(e) => submit(e)}>Submit Form</CButton>
+            </Link>
           </div>
         </CCardBody>
         </CCard>

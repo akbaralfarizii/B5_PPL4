@@ -36,7 +36,7 @@ function InputDataPenguji () {
       fetchData()
     }, [])
 
-    const uri = `http://192.168.100.3:1337/api/pengujis`
+    const uri = `http://localhost:1337/api/pengujis`
   
     function submit(nilai) {
         axios.post(uri,{

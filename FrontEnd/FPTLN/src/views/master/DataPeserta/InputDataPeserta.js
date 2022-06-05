@@ -37,7 +37,7 @@ const InputDataPeserta  = () => {
       fetchData();
     }, []);
 
-    const uri = `http://192.168.100.3:1337/api/pesertas`
+    const uri = `http://localhost:1337/api/pesertas`
   
     function submit(nilai) {
         axios.post(uri,{

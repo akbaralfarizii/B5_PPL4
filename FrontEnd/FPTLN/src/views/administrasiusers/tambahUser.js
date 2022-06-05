@@ -17,7 +17,7 @@ import * as api from './api';
 const tambahUser = () => {
     let kembali = useNavigate()
 
-    const uri = `http://192.168.100.3:1337/api/administrasi-users?populate=%2A`
+    const uri = `http://localhost:1337/api/administrasi-users?populate=%2A`
 
     const [NIP, setNIP] = useState("")
 
