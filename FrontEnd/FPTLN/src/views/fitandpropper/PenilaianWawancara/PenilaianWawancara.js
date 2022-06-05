@@ -67,8 +67,8 @@ const PenilaianWawancara = () => {
                       <CTableDataCell>{todo.attributes.proyeksi.data.attributes.nama_proyeksi}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.peserta.data.attributes.pegawai.data.attributes.jenjang.data.attributes.nama_jenjang}</CTableDataCell>
                       <CTableDataCell>{todo.attributes.Tgl_Wawancara}</CTableDataCell>
-                      <CTableDataCell>5</CTableDataCell>
-                      <CTableDataCell></CTableDataCell>
+                      <CTableDataCell>penguji</CTableDataCell>
+                      <CTableDataCell>{todo.attributes.total_penilaian_wawancara}</CTableDataCell>
                     </CTableRow>
                 </CTableBody>
               ))}
